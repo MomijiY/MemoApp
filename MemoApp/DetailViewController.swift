@@ -326,29 +326,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     let saveData: UserDefaults = UserDefaults.standard
 
-//    //カメラボタンがタップされた時の処理
-//    @IBAction func launchCamera(_ sender: UIBarButtonItem) {
-//        let camera = UIImagePickerController.SourceType.camera
-//        if UIImagePickerController.isSourceTypeAvailable(camera) {
-//            let picker = UIImagePickerController()
-//            picker.sourceType = camera
-//            picker.delegate = self
-//            self.present(picker, animated: true)
-//        }
-//    }
-//
-//    //ユーザーが撮影し終わった時の処理
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//
-//        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-//        self.imageView.image = image
-//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-//        self.dismiss(animated: true)
-//        UserDefaults.standard.set(image, forKey: "MemoImage")
-//        saveData.synchronize()
-//    }
-
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -363,7 +340,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         kbToolBar.items = [spacer, commitButton]
         memoTextView.inputAccessoryView = kbToolBar
 
-        let imageData:NSData = UserDefaults.standard.object(forKey: "MemoImage") as! NSData
+        let imageData:NSData = UserDefaults.standard.object(forKey: "memoImageArray") as! NSData
         imageView.image = UIImage(data: imageData as Data)
 //        imageView = saveData.object(forKey: "MemoImage") as! UIImageView
     }
@@ -376,10 +353,12 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBAction func save(_ sender: Any) {
 
         let inputText = memoTextView.text
+        let inputImage = imageView.image
         let ud = UserDefaults.standard
         if ud.array(forKey: "memoArray") != nil{
             //saveMemoArrayに取得
             var saveMemoArray = ud.array(forKey: "memoArray") as! [String]
+            
                 //テキストに何か書かれているか？
             if inputText != ""{
                 //配列に追加
@@ -402,6 +381,28 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                 showAlert(title: "何も入力されていません")
             }
         }
+        
+        if ud.array(forKey: "memoImageArray") != nil{
+             var saveMemoImageArray = ud.array(forKey: "memoImageArray") as! [String]
+            
+            if inputImage != nil {
+                saveMemoImageArray[selectedRow] = inputImage!
+                ud.set(saveMemoImageArray, forKey: "memoImageArray")
+            }else{
+                showAlert(title: "何も入力されていません。")
+            }
+            
+        }else{
+            var newMemoImageArray = [String]()
+            
+            if inputImage != nil{
+                newMemoImageArray.append(inputImage!)
+                ud.set(newMemoImageArray, forKey: "memoImageArray")
+            }else{
+                showAlert(title: "何も入力されていません。")
+            }
+        }
+        
         showAlert(title: "保存完了")
         ud.synchronize()
     }

@@ -109,6 +109,7 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
 
         let inputText = memoTextView.text
         let ud = UserDefaults.standard
+        let inputImage = imageView.image
         if ud.array(forKey: "memoArray") != nil{
 
             var saveMemoArray = ud.array(forKey: "memoArray") as! [String]
@@ -133,6 +134,18 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
                 showAlert(title: "何も入力されていません")
             }
         }
+        if ud.array(forKey: "memoImageArray") != nil {
+            var saveMemoImageArray = ud.array(forKey: "memoImageArray") as! [String]
+            
+            if inputImage != nil{
+                //配列に追加
+                saveMemoImageArray.append(inputImage!)
+                ud.set(saveMemoImageArray, forKey: "memoImageArray")
+            }else{
+                showAlert(title: "何も入力されていません。")
+            }
+        }
+        
         showAlert(title: "保存完了")
         ud.synchronize()
     }
