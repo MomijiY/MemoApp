@@ -189,8 +189,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         super.viewDidLoad()
 
         //追加画面で入力した内容を取得する
-        if UserDefaults.standard.object(forKey: "TodoList") != nil {
-            MemonoNakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
+        if UserDefaults.standard.object(forKey: "memoArray") != nil {
+            MemonoNakami = UserDefaults.standard.object(forKey: "memoArray") as! [String]
         }
 //        memoTableView.delegate = self
 //        memoTableView.dataSource = self

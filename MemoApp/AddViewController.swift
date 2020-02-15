@@ -16,7 +16,7 @@ class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINa
 
     @IBOutlet weak var memoTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var imageButton: UIButton!
+//    @IBOutlet weak var imageButton: UIButton!
 
     let swiftyTesseract = SwiftyTesseract(language: RecognitionLanguage.japanese)
     let saveData: UserDefaults = UserDefaults.standard
