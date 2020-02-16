@@ -12,7 +12,7 @@
 //class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 //
 //    @IBOutlet weak var memoTableView: UITableView!
-////    @IBOutlet weak var cellLabel: UILabel!
+//    @IBOutlet weak var cellLabel: UILabel!Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
 //
 //    var image: UIImage!
 //    var saveArray: Array = [NSData]()
@@ -192,10 +192,14 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         if UserDefaults.standard.object(forKey: "memoArray") != nil {
             MemonoNakami = UserDefaults.standard.object(forKey: "memoArray") as! [String]
         }
-//        memoTableView.delegate = self
-//        memoTableView.dataSource = self
+        if UserDefaults.standard.object(forKey: "MemoImage") != nil{
+            MemoImageNakami = UserDefaults.standard.object(forKey: "MemoImage") as! [UIImage]
+        }
+        memoTableView.delegate = self
+        memoTableView.dataSource = self
         memoTableView.reloadData()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         loadMemo()
     }
@@ -209,6 +213,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             let selectedIndexPath = memoTableView.indexPathForSelectedRow!
             detailViewController.selectedMemo = MemonoNakami[selectedIndexPath.row]
             detailViewController.selectedRow = selectedIndexPath.row
+            
+            let selectedIndexPathImage = memoTableView.indexPathForSelectedRow!
+            detailViewController.selectedImageMemo = MemoImageNakami[selectedIndexPathImage.row]
         }
     }
     func loadMemo(){
@@ -216,6 +223,12 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             //取得 またas!でアンラップしているのでnilじゃない時のみ
             MemonoNakami = ud.array(forKey: "memoArray") as![String]
             //reloadしてくれる
+            memoTableView.reloadData()
+        }
+        if ud.array(forKey: "MemoImage") != nil{
+            
+            MemonoNakami = ud.array(forKey: "memoArray") as! [String]
+            
             memoTableView.reloadData()
         }
     }
@@ -228,6 +241,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
 
             //再びアプリ内に消去した配列を保存
             ud.set(MemonoNakami, forKey: "memoArray")
+            ud.set(MemonoNakami, forKey: "MemoImage")
 
             //tableViewを更新
             tableView.reloadData()

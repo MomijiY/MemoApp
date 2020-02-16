@@ -127,24 +127,24 @@
 //
 //
 //
-////    func deleteShowAlert() {
-////        let alert = UIAlertController(title: "確認",
-////                                      message: "画像を削除してもいいですか？",
-////                                      preferredStyle: .alert)
-////        let okButton = UIAlertAction(title: "OK",
-////                                     style: .default,
-////                                     handler:{(action: UIAlertAction) -> Void in
-////        })
-////        let cancelButton = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
-////
-////        // アラートにボタン追加
-////        alert.addAction(okButton)
-////        alert.addAction(cancelButton)
-////
-////        // アラート表示
-////        present(alert, animated: true, completion: nil)
-////        print("アラート表示成功！！")
-////    }
+//    func deleteShowAlert() {
+//        let alert = UIAlertController(title: "確認",
+//                                      message: "画像を削除してもいいですか？",
+//                                      preferredStyle: .alert)
+//        let okButton = UIAlertAction(title: "OK",
+//                                     style: .default,
+//                                     handler:{(action: UIAlertAction) -> Void in
+//        })
+//        let cancelButton = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+//
+//        // アラートにボタン追加
+//        alert.addAction(okButton)
+//        alert.addAction(cancelButton)
+//
+//        // アラート表示
+//        present(alert, animated: true, completion: nil)
+//        print("アラート表示成功！！")
+//    }
 //
 //
 //    //シェアボタン
@@ -321,15 +321,18 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var memoTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
 
-    var selectedRow:Int!
+    var selectedRow: Int!
     var selectedMemo : String!
+    var selectedImageRow: UIImage!
+    var selectedImageMemo: UIImage!
 
     let saveData: UserDefaults = UserDefaults.standard
-
+    let ud = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         memoTextView.text = selectedMemo
+        imageView.image = selectedImageMemo
         let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
         kbToolBar.barStyle = UIBarStyle.default  // スタイルを設定
         kbToolBar.sizeToFit()  // 画面幅に合わせてサイズを変更
@@ -339,9 +342,15 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
         kbToolBar.items = [spacer, commitButton]
         memoTextView.inputAccessoryView = kbToolBar
+        
+//        var addImage: UIImage = imageView.image!
+//
+//        addImage = ud.image(forKey: "MemoImage")
+//
+//        imageView.image = addImage
 
-        let imageData:NSData = UserDefaults.standard.object(forKey: "memoImageArray") as! NSData
-        imageView.image = UIImage(data: imageData as Data)
+//        let imageData:NSData = UserDefaults.standard.object(forKey: "memoImageArray") as! NSData
+//        imageView.image = UIImage(data: imageData as Data)
 //        imageView = saveData.object(forKey: "MemoImage") as! UIImageView
     }
 
@@ -353,7 +362,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBAction func save(_ sender: Any) {
 
         let inputText = memoTextView.text
-        let inputImage = imageView.image
         let ud = UserDefaults.standard
         if ud.array(forKey: "memoArray") != nil{
             //saveMemoArrayに取得
@@ -379,27 +387,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                 ud.set(newMemoArray, forKey: "memoArray")
             }else{
                 showAlert(title: "何も入力されていません")
-            }
-        }
-        
-        if ud.array(forKey: "memoImageArray") != nil{
-             var saveMemoImageArray = ud.array(forKey: "memoImageArray") as! [String]
-            
-            if inputImage != nil {
-                saveMemoImageArray[selectedRow] = inputImage!
-                ud.set(saveMemoImageArray, forKey: "memoImageArray")
-            }else{
-                showAlert(title: "何も入力されていません。")
-            }
-            
-        }else{
-            var newMemoImageArray = [String]()
-            
-            if inputImage != nil{
-                newMemoImageArray.append(inputImage!)
-                ud.set(newMemoImageArray, forKey: "memoImageArray")
-            }else{
-                showAlert(title: "何も入力されていません。")
             }
         }
         
@@ -437,14 +424,31 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
 //    }
     
     @IBAction func showActivityView(_ sender: UIBarButtonItem) {
-//        できた
         let controller = UIActivityViewController(activityItems: [imageView.image!, memoTextView.text!], applicationActivities: nil)
         self.present(controller, animated: true, completion: nil)
 
     }
     
-
-
 }
 
+extension UserDefaults {
+    
+    // 保存したいUIImage, 保存するUserDefaults, Keyを取得
+    func setUIImageToData(image: UIImage, forKey: String) {
+        // UIImageをData型へ変換
+        let nsdata = image.pngData()
+        // UserDefaultsへ保存
+        self.set(nsdata, forKey: "MemoImage")
+    }
 
+    // 参照するUserDefaults, Keyを取得, UIImageを返す
+    func image(forKey: String) -> UIImage {
+        // UserDefaultsからKeyを基にData型を参照
+        let data = self.data(forKey: "MemoImage")
+        // UIImage型へ変換
+        let returnImage = UIImage(data: data!)
+        // UIImageを返す
+        return returnImage!
+    }
+    
+}

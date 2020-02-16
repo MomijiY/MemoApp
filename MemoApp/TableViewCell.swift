@@ -69,7 +69,7 @@ import UIKit
 class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellImage: UIImageView!
-    @IBOutlet weak var cellLabel: UILabel!
+//    @IBOutlet weak var cellLabel: UILabel!
 
     let uuid = NSUUID().uuidString
 
