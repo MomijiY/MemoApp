@@ -195,7 +195,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         }
         if UserDefaults.standard.object(forKey: "MemoImage") != nil{
 //            MemoImageNakami = UserDefaults.standard.object(forKey: "MemoImage") as! [UIImage]
-//            MemoImageNakami = [ud.image(forKey: "MemoImage")]
+            MemoImageNakami = [ud.image(forKey: "MemoImage")]
+            
         }
         memoTableView.delegate = self
         memoTableView.dataSource = self

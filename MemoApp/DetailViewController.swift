@@ -332,6 +332,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         memoTextView.text = selectedMemo
+        
+        MemoImageNakami = [ud.image(forKey: "MemoImage")]
         imageView.image = selectedImageMemo
         
         let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
