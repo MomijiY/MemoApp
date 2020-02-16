@@ -169,6 +169,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MemonoNakami.count
+//        return MemoImageNakami.count
     }
 
 
@@ -193,7 +194,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             MemonoNakami = UserDefaults.standard.object(forKey: "memoArray") as! [String]
         }
         if UserDefaults.standard.object(forKey: "MemoImage") != nil{
-            MemoImageNakami = UserDefaults.standard.object(forKey: "MemoImage") as! [UIImage]
+//            MemoImageNakami = UserDefaults.standard.object(forKey: "MemoImage") as! [UIImage]
+//            MemoImageNakami = [ud.image(forKey: "MemoImage")]
         }
         memoTableView.delegate = self
         memoTableView.dataSource = self
@@ -216,6 +218,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             
             let selectedIndexPathImage = memoTableView.indexPathForSelectedRow!
             detailViewController.selectedImageMemo = MemoImageNakami[selectedIndexPathImage.row]
+            print(MemoImageNakami.count)
         }
     }
     func loadMemo(){

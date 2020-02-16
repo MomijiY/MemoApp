@@ -12,6 +12,7 @@ import SwiftyTesseract
 
 var MemonoNakami = [String]()
 var MemoImageNakami = [UIImage]()
+
 class AddViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var memoTextView: UITextView!

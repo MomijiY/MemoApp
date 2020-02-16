@@ -323,7 +323,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     var selectedRow: Int!
     var selectedMemo : String!
-    var selectedImageRow: UIImage!
+//    var selectedImageRow: UIImage!
     var selectedImageMemo: UIImage!
 
     let saveData: UserDefaults = UserDefaults.standard
@@ -333,6 +333,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidLoad()
         memoTextView.text = selectedMemo
         imageView.image = selectedImageMemo
+        
         let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
         kbToolBar.barStyle = UIBarStyle.default  // スタイルを設定
         kbToolBar.sizeToFit()  // 画面幅に合わせてサイズを変更

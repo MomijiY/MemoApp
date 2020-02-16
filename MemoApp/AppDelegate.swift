@@ -21,16 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //使用するStoryboardのインスタンス化
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
+
         //UserDefaultsにBool型のkey"launchedBefore"を用意
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        
+
         if (launchedBefore == true) {
             UserDefaults.standard.set(false, forKey: "launchedBefore")
         } else {
             //起動を判定するlaunchedBeforeという論理型のKeyをUserDefaultsに用意
             UserDefaults.standard.set(true, forKey: "launchedBefore")
-            
+
             //チュートリアル用のviewcontrollerのインスタンスを用意してwindowに渡す
             let tutorialVC = storyboard.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
             self.window = UIWindow(frame: UIScreen.main.bounds)
