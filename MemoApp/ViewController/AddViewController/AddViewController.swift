@@ -38,20 +38,21 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         override func viewDidLoad() {
             super.viewDidLoad()
             
-                // donebuttonの実装
-            let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-            kbToolBar.barStyle = UIBarStyle.default // スタイルを設定
-            kbToolBar.sizeToFit() // 画面幅に合わせてサイズを変更
-            // スペーサー
-            let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,target: self, action: nil)
-            // 閉じるボタン
-            let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
-            kbToolBar.items = [spacer, commitButton]
-            contentTextView.inputAccessoryView = kbToolBar
-            
-            //first image
-            imageView.image = UIImage(named: "No-Image.PNG")
-//            configureUI()
+//                // donebuttonの実装
+//            let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+//            kbToolBar.barStyle = UIBarStyle.default // スタイルを設定
+//            kbToolBar.sizeToFit() // 画面幅に合わせてサイズを変更
+//            // スペーサー
+//            let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,target: self, action: nil)
+//            // 閉じるボタン
+//            let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
+//            kbToolBar.items = [spacer, commitButton]
+//            titleTextField.inputAccessoryView = kbToolBar
+//            contentTextView.inputAccessoryView = kbToolBar
+//
+//            //first image
+//            imageView.image = UIImage(named: "No-Image.PNG")
+            configureUI()
         }
         
         @IBAction func tappedSwiftyTesseract(_ sender: Any) {
@@ -119,20 +120,27 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         }
     
     
-        @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
+//        @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
+////            saveMemo()
+//        }
+        @objc private func onTapSaveButton(_ sender: UIBarButtonItem) {
             saveMemo()
+            let vc = ViewController.instance()
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 
     // MARK: - Configure
 
-//    extension AddViewController {
-//
-//        private func configureUI() {
+    extension AddViewController {
+
+        private func configureUI() {
 //            tableView.delegate = self
-//            navigationItem.title = "メモを追加"
-//        }
-//    }
+            navigationItem.title = "メモを追加"
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onTapSaveButton(_:)))
+        }
+        
+    }
 
     // MARK: - Model
 

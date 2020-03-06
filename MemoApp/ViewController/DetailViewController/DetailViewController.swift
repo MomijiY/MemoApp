@@ -27,8 +27,11 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
     // MARK: Lifecycle
 
     static func instance(_ memo: Memo) -> DetailViewController {
+        print("before vc")
         let vc = UIStoryboard(name: "DetailViewController", bundle: nil).instantiateInitialViewController() as! DetailViewController
+        print("after vc")
         vc.memo = memo
+        print("vc.memo = memo")
         return vc
     }
     
@@ -115,15 +118,21 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
         }
     
     
-        @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
-            saveMemo()
-        }
+//        @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
+//            saveMemo()
+//        }
 //        シェアボタン
         @IBAction func showActivityView(_ sender: UIBarButtonItem) {
             let activitycontroller = UIActivityViewController(activityItems: [titletextField, contentTextView,imageView], applicationActivities: nil)
     
             self.present(activitycontroller, animated: true, completion: nil)
         }
+    
+    @objc private func onTapSaveButton(_ sender: UIBarButtonItem) {
+        saveMemo()
+        let vc = ViewController.instance()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     }
 
@@ -141,6 +150,7 @@ extension DetailViewController {
         if let image = model.loadImage(id: memo.id) {
             imageView.image = image
         }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onTapSaveButton(_:)))
     }
 }
 extension DetailViewController {

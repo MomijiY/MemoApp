@@ -10,6 +10,8 @@
 		7917F0F6239286CC0076A020 /* icon (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 7917F0F5239286CC0076A020 /* icon (1).png */; };
 		793A7F7D240BE7E200C6C0D2 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793A7F7C240BE7E200C6C0D2 /* Memo.swift */; };
 		793A7F7F240BE83600C6C0D2 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793A7F7E240BE83600C6C0D2 /* UserDefaultsModel.swift */; };
+		793CA80424112E0C0062AD7E /* AddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793CA80324112E0B0062AD7E /* AddViewController.storyboard */; };
+		793CA8072411E00E0062AD7E /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793CA8062411E00E0062AD7E /* ViewController.storyboard */; };
 		794116D023EFBE2A004ECD22 /* Memo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 794116CF23EFBE2A004ECD22 /* Memo1.png */; };
 		794116DF23EFC2B3004ECD22 /* Memoチュートリアル.008.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 794116D123EFC2AE004ECD22 /* Memoチュートリアル.008.jpeg */; };
 		794116E023EFC2B3004ECD22 /* Memoチュートリアル.012.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 794116D223EFC2AF004ECD22 /* Memoチュートリアル.012.jpeg */; };
@@ -40,6 +42,7 @@
 		79E1E7932386B6C600A4A42E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1E7922386B6C600A4A42E /* AddViewController.swift */; };
 		79F54BF6240FCF950050DD66 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F54BF4240FCF950050DD66 /* TableViewCell.swift */; };
 		79F54BF7240FCF950050DD66 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F54BF5240FCF950050DD66 /* TableViewCell.xib */; };
+		79F54BFA24111C910050DD66 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79F54BF924111C910050DD66 /* DetailViewController.storyboard */; };
 		7DFA104F2D16806D501F6111 /* Pods_MemoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAB4029358D4ACDF9548CA2 /* Pods_MemoAppTests.framework */; };
 		91A9DDB7A11924222DBD8F7B /* Pods_MemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F737380E61F476A1B316677 /* Pods_MemoApp.framework */; };
 		F3C57C7C10E36C56DA957745 /* Pods_MemoApp_MemoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B808BA8B4F14112105E77C /* Pods_MemoApp_MemoAppUITests.framework */; };
@@ -72,6 +75,8 @@
 		7917F0F5239286CC0076A020 /* icon (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon (1).png"; sourceTree = "<group>"; };
 		793A7F7C240BE7E200C6C0D2 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		793A7F7E240BE83600C6C0D2 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
+		793CA80324112E0B0062AD7E /* AddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddViewController.storyboard; sourceTree = "<group>"; };
+		793CA8062411E00E0062AD7E /* ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewController.storyboard; sourceTree = "<group>"; };
 		794116CF23EFBE2A004ECD22 /* Memo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Memo1.png; sourceTree = "<group>"; };
 		794116D123EFC2AE004ECD22 /* Memoチュートリアル.008.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Memoチュートリアル.008.jpeg"; sourceTree = "<group>"; };
 		794116D223EFC2AF004ECD22 /* Memoチュートリアル.012.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Memoチュートリアル.012.jpeg"; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 		79E1E7922386B6C600A4A42E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		79F54BF4240FCF950050DD66 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		79F54BF5240FCF950050DD66 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		79F54BF924111C910050DD66 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
 		BC8E525DEC75089A991FE9E3 /* Pods-MemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoApp.release.xcconfig"; path = "Target Support Files/Pods-MemoApp/Pods-MemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		DCAB4029358D4ACDF9548CA2 /* Pods_MemoAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA0CABC102A0E123870B6A9 /* Pods-MemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoApp.debug.xcconfig"; path = "Target Support Files/Pods-MemoApp/Pods-MemoApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,10 +172,28 @@
 		793A7FC4240BEA4300C6C0D2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				79E1E78E2386B6B100A4A42E /* ViewController.swift */,
-				79E1E7902386B6BA00A4A42E /* DetailViewController.swift */,
-				79E1E7922386B6C600A4A42E /* AddViewController.swift */,
+				793CA8052411DFFC0062AD7E /* ViewController */,
+				793CA80024111E830062AD7E /* AddViewController */,
+				79F54BF824111C6E0050DD66 /* DetailViewController */,
 				79F54BF3240FCF7F0050DD66 /* Cell */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		793CA80024111E830062AD7E /* AddViewController */ = {
+			isa = PBXGroup;
+			children = (
+				79E1E7922386B6C600A4A42E /* AddViewController.swift */,
+				793CA80324112E0B0062AD7E /* AddViewController.storyboard */,
+			);
+			path = AddViewController;
+			sourceTree = "<group>";
+		};
+		793CA8052411DFFC0062AD7E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				79E1E78E2386B6B100A4A42E /* ViewController.swift */,
+				793CA8062411E00E0062AD7E /* ViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -263,6 +287,15 @@
 				79F54BF5240FCF950050DD66 /* TableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		79F54BF824111C6E0050DD66 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				79E1E7902386B6BA00A4A42E /* DetailViewController.swift */,
+				79F54BF924111C910050DD66 /* DetailViewController.storyboard */,
+			);
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
 		CA59BCCBC94F6A5B25C0418B /* Frameworks */ = {
@@ -385,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				794116E923EFC2B3004ECD22 /* Memoチュートリアル.010.jpeg in Resources */,
+				793CA80424112E0C0062AD7E /* AddViewController.storyboard in Resources */,
 				794116E023EFC2B3004ECD22 /* Memoチュートリアル.012.jpeg in Resources */,
 				794116EA23EFC2B3004ECD22 /* Memoチュートリアル.001.jpeg in Resources */,
 				794116EB23EFC2B3004ECD22 /* Memoチュートリアル.006.jpeg in Resources */,
@@ -400,6 +434,8 @@
 				794116D023EFBE2A004ECD22 /* Memo1.png in Resources */,
 				794116EC23EFC2B3004ECD22 /* Memoチュートリアル.002.jpeg in Resources */,
 				797FD51D238A7F4300416028 /* tessdata in Resources */,
+				793CA8072411E00E0062AD7E /* ViewController.storyboard in Resources */,
+				79F54BFA24111C910050DD66 /* DetailViewController.storyboard in Resources */,
 				797FD51F238C05F800416028 /* No-Image.PNG in Resources */,
 				79E1E7662386B54100A4A42E /* Preview Assets.xcassets in Resources */,
 				79F54BF7240FCF950050DD66 /* TableViewCell.xib in Resources */,
