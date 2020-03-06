@@ -142,6 +142,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         
     }
 
+
     // MARK: - Model
 
     extension AddViewController {
