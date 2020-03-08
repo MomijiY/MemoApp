@@ -130,8 +130,8 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
     
     @objc private func onTapSaveButton(_ sender: UIBarButtonItem) {
         saveMemo()
-        let vc = ViewController.instance()
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = ViewController.instance()
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     }
@@ -174,8 +174,9 @@ extension DetailViewController {
             model.saveImage(id: memo.id, image: image)
         }
         
-        // Pop
-        navigationController?.popViewController(animated: true)
+        let storyboard: UIStoryboard = UIStoryboard(name: "ViewController", bundle: nil)
+        let next: UIViewController = storyboard.instantiateInitialViewController() as! UIViewController
+        present(next, animated: true, completion: nil)
     }
 }
 

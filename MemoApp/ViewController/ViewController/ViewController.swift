@@ -76,6 +76,10 @@ extension ViewController {
         guard let memos = model.loadMemos() else { return }
         self.dataSource = memos
     }
+    private func deleteMemos() {
+        guard let memos = model.deleteMemos() else { return }
+        self.dataSource = memos
+    }
 }
 
 // MARK: - TableView dataSource, delegate
@@ -87,9 +91,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var memoArray = [Memo]()
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
         let memo = dataSource[indexPath.row]
         cell.setupCell(title: memo.title, content: memo.content)
+        memoArray.append(memo)
         return cell
     }
     
@@ -100,6 +106,26 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let vc = DetailViewController.instance(memo)
         navigationController?.pushViewController(vc, animated: true)
     }
+    //セルの削除許可を設定
+    func tableView(_ tableView: UITableView,canEditRowAt indexPath: IndexPath) -> Bool{
+        return true
+    }
+    
+        //セルの削除ボタンが押された時の処理
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print("削除前")
+        
+        deleteMemos()
+//        tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+        tableView.reloadData()
+//        //削除するだけなのでindexPath_row = indexPath.rowをする必要はない。
+//        if editingStyle == UITableViewCell.EditingStyle.delete {
+//            var memoArray = [Memo]()
+//            memoArray.remove(at: indexPath.row)
+//            tableView.reloadData()
+//            }
+//        }
+}
 }
 
 

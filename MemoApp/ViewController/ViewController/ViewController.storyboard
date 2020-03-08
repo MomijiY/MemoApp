@@ -10,18 +10,23 @@
         <!--ViewController-->
         <scene sceneID="YOu-nh-knZ">
             <objects>
-                <viewController restorationIdentifier="ViewController" storyboardIdentifier="ViewController" title="ViewController" id="M54-ym-4Rw" customClass="ViewController" customModule="MemoApp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="ViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M54-ym-4Rw" customClass="ViewController" customModule="MemoApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Hq-Lq-rZj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MMz-s0-Qot">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MMz-s0-Qot">
                                 <rect key="frame" x="0.0" y="44" width="414" height="840"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="MMz-s0-Qot" firstAttribute="top" secondItem="7Hq-Lq-rZj" secondAttribute="top" constant="44" id="Ozd-ek-cCt"/>
+                            <constraint firstAttribute="bottom" secondItem="MMz-s0-Qot" secondAttribute="bottom" constant="12" id="WCg-am-Exu"/>
+                            <constraint firstItem="MMz-s0-Qot" firstAttribute="leading" secondItem="Qbl-tc-5zJ" secondAttribute="leading" id="dWV-g5-vcZ"/>
+                            <constraint firstItem="MMz-s0-Qot" firstAttribute="trailing" secondItem="Qbl-tc-5zJ" secondAttribute="trailing" id="p7p-Wv-Iu9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Qbl-tc-5zJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="JLj-Kj-iCs"/>
@@ -36,7 +41,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ZMh-bJ-df1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vE9-W5-AaM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="vE9-W5-AaM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U6n-9G-cd3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

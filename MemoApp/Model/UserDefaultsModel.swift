@@ -27,6 +27,13 @@ struct UserDefaultsModel {
         return storedMemos
     }
     
+    func deleteMemos() -> [Memo]? {
+        guard let data = UserDefaults.standard.data(forKey: kStoredMemosKey),
+            let storedMemos = try? JSONDecoder().decode([Memo].self, from: data) else { return nil }
+        var memoArray = [data]
+        return storedMemos
+    }
+    
     // MARK: Image
     
     func saveImage(id: String, image: UIImage) {
