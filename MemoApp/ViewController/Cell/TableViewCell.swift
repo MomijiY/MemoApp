@@ -14,7 +14,7 @@ class TableViewCell: UITableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var contentLabel: UILabel!
-
+    @IBOutlet private weak var cellImageView: UIImageView!
     // MARK: Static properties
 
     static let reuseIdentifier = "TableViewCell"
@@ -39,5 +39,6 @@ class TableViewCell: UITableViewCell {
     func setupCell(title: String, content: String) {
         titleLabel.text = title
         contentLabel.text = content
+        
     }
 }

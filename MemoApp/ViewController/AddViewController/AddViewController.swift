@@ -9,6 +9,7 @@
 ////追加画面
 import UIKit
 import SwiftyTesseract
+var memoTitleArray = [String]()
 
 class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
         // MARK: IBOutlet
@@ -17,6 +18,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
     //    @IBOutlet weak var contentTextField: UITextField!
         @IBOutlet weak var contentTextView: UITextView!
         @IBOutlet weak var imageView: UIImageView!
+        @IBOutlet weak var navigationBar: UINavigationBar!
 //        @IBOutlet weak var tableView: UITableView!
         // MARK: Properties
         
@@ -37,22 +39,22 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-//                // donebuttonの実装
-//            let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-//            kbToolBar.barStyle = UIBarStyle.default // スタイルを設定
-//            kbToolBar.sizeToFit() // 画面幅に合わせてサイズを変更
-//            // スペーサー
-//            let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,target: self, action: nil)
-//            // 閉じるボタン
-//            let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
-//            kbToolBar.items = [spacer, commitButton]
-//            titleTextField.inputAccessoryView = kbToolBar
-//            contentTextView.inputAccessoryView = kbToolBar
-//
+
+            // donebuttonの実装
+            let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+            kbToolBar.barStyle = UIBarStyle.default // スタイルを設定
+            kbToolBar.sizeToFit() // 画面幅に合わせてサイズを変更
+            // スペーサー
+            let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,target: self, action: nil)
+            // 閉じるボタン
+            let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
+            kbToolBar.items = [spacer, commitButton]
+            titleTextField.inputAccessoryView = kbToolBar
+            contentTextView.inputAccessoryView = kbToolBar
+
 //            //first image
 //            imageView.image = UIImage(named: "No-Image.PNG")
-            configureUI()
+//            configureUI()
         }
         
         @IBAction func tappedSwiftyTesseract(_ sender: Any) {
@@ -123,10 +125,14 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 //        @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
 ////            saveMemo()
 //        }
-        @objc private func onTapSaveButton(_ sender: UIBarButtonItem) {
+        @objc private func onTapSaveButton() {
             saveMemo()
 //            let vc = ViewController.instance()
 //            navigationController?.pushViewController(vc, animated: true)
+        }
+    
+        @IBAction func Save() {
+            onTapSaveButton()
         }
     }
 
@@ -134,12 +140,11 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 
     extension AddViewController {
 
-        private func configureUI() {
-//            tableView.delegate = self
-            navigationItem.title = "メモを追加"
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onTapSaveButton(_:)))
-        }
-        
+//        private func configureUI() {
+////            tableView.delegate = self
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onTapSaveButton(_:)))
+//        }
+//
     }
 
 
@@ -166,11 +171,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
                 model.saveImage(id: memo.id, image: image)
             }
             
-//            // Pop
-//            navigationController?.popViewController(animated: true)
-//            let storyboard: UIStoryboard = self.storyboard!
-//            let nextVC = storyboard.instantiateViewController(withIdentifier: "ViewController")
-//            self.present(nextVC, animated: true, completion: nil)
+            memoTitleArray = [title]
             let storyboard: UIStoryboard = UIStoryboard(name: "ViewController", bundle: nil)
             let next: UIViewController = storyboard.instantiateInitialViewController() as! UIViewController
             present(next, animated: true, completion: nil)

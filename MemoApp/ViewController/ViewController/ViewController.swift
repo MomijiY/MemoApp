@@ -14,6 +14,9 @@ final class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let deviceId = UIDevice.current.identifierForVendor!.uuidString
+
+    
     // MARK: Properties
     
     private let model = UserDefaultsModel()
@@ -32,8 +35,6 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(onTapAddButton(_:)))
-//        configureUI()
         configureTableView()
     }
     
@@ -44,10 +45,20 @@ final class ViewController: UIViewController {
     
     // MARK: IBAction
     
-    @objc private func onTapAddButton(_ sender: UIBarButtonItem) {
+    @objc private func onTapAddButton() {
         let vc = AddViewController.instance()
-        navigationController?.pushViewController(vc, animated: true)
+//        navigationController?.pushViewController(vc, animated: true)
+        var sb: UIStoryboard! = UIStoryboard(name: "AddViewController", bundle: nil)
+        let nv = sb.instantiateViewController(withIdentifier: "AddViewController")
+        self.present(nv, animated: true, completion: nil)
     }
+    
+    @IBAction func TapAddButton(_ sender: UIBarButtonItem) {
+        onTapAddButton()
+    }
+    
+    
+    
 }
 
 // MARK: - Configure
@@ -56,7 +67,6 @@ extension ViewController {
     
 //    private func configureUI() {
 //        navigationItem.title = "メモ一覧"
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(onTapAddButton(_:)))
 //    }
     
     private func configureTableView() {
@@ -76,10 +86,10 @@ extension ViewController {
         guard let memos = model.loadMemos() else { return }
         self.dataSource = memos
     }
-    private func deleteMemos() {
-        guard let memos = model.deleteMemos() else { return }
-        self.dataSource = memos
-    }
+//    private func deleteMemos() {
+//        guard let memos = model.deleteMemos() else { return }
+//        self.dataSource = memos
+//    }
 }
 
 // MARK: - TableView dataSource, delegate
@@ -104,28 +114,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         let memo = dataSource[indexPath.row]
         let vc = DetailViewController.instance(memo)
-        navigationController?.pushViewController(vc, animated: true)
+        var sb: UIStoryboard! = UIStoryboard(name: "DetailViewController", bundle: nil)
+        let nv = sb.instantiateViewController(withIdentifier: "DetailViewController")
+        self.present(nv, animated: true, completion: nil)
     }
     //セルの削除許可を設定
     func tableView(_ tableView: UITableView,canEditRowAt indexPath: IndexPath) -> Bool{
         return true
     }
     
-        //セルの削除ボタンが押された時の処理
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print("削除前")
-        
-        deleteMemos()
-//        tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
-        tableView.reloadData()
-//        //削除するだけなのでindexPath_row = indexPath.rowをする必要はない。
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
 //        if editingStyle == UITableViewCell.EditingStyle.delete {
-//            var memoArray = [Memo]()
-//            memoArray.remove(at: indexPath.row)
+//            cellList[indexPath.section].remove(at: indexPath.row)
 //            tableView.reloadData()
-//            }
 //        }
-}
+//    }
 }
 
 

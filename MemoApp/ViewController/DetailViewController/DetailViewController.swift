@@ -17,6 +17,7 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var titletextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     // MARK: Properties
     
@@ -51,7 +52,13 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
         let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
         kbToolBar.items = [spacer, commitButton]
         contentTextView.inputAccessoryView = kbToolBar
-        configureUI()
+        // - Label
+        titletextField.text = memo.title
+        contentTextView.text = memo.content
+        // - ImageView
+        if let image = model.loadImage(id: memo.id) {
+            imageView.image = image
+        }
     }
         @IBAction func tappedSwiftyTesseract(_ sender: Any) {
             guard let image = imageView.image else { return }
@@ -128,42 +135,51 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
             self.present(activitycontroller, animated: true, completion: nil)
         }
     
-    @objc private func onTapSaveButton(_ sender: UIBarButtonItem) {
+    @IBAction func SaveButton(_  sender: UIButton) {
         saveMemo()
-//        let vc = ViewController.instance()
-//        navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc private func onTapSaveButton(_ sender: UIBarButtonItem) {
+        saveMemo()
     }
+    
+    func showAlert(title:String){
+            let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+    
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    
+            alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+    
+            self.present(alert, animated: true, completion:nil)
+        }
+    
+}
 
 // MARK: - Configure
 
-extension DetailViewController {
-    
-    private func configureUI() {
-        // - Navigation
-        navigationItem.title = "メモ詳細"
-        // - Label
-        titletextField.text = memo.title
-        contentTextView.text = memo.content
-        // - ImageView
-        if let image = model.loadImage(id: memo.id) {
-            imageView.image = image
-        }
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onTapSaveButton(_:)))
-    }
-}
+//extension DetailViewController {
+//
+//    private func configureUI() {
+//        // - Label
+//        titletextField.text = memo.title
+//        contentTextView.text = memo.content
+//        // - ImageView
+//        if let image = model.loadImage(id: memo.id) {
+//            imageView.image = image
+//        }
+//    }
+//
+//}
 extension DetailViewController {
     
     private func saveMemo() {
         guard let title = titletextField.text,
             let content = contentTextView.text else { return }
         
-        // Save memo
+
         let memo = Memo(id: UUID().uuidString, title: title, content: content)
         if let storedMemos = model.loadMemos() {
             var newMemos = storedMemos
-            newMemos.append(memo)
             model.saveMemos(newMemos)
         } else {
             model.saveMemos([memo])
@@ -178,6 +194,11 @@ extension DetailViewController {
         let next: UIViewController = storyboard.instantiateInitialViewController() as! UIViewController
         present(next, animated: true, completion: nil)
     }
+    
+//        //削除ボタン
+//        func deleteMemo() {
+//
+//            }
 }
 
 //
