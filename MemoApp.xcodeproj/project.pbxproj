@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C44651E24190DF900AD2821 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C44651C24190DF800AD2821 /* AddViewController.swift */; };
+		1C44651F24190DF900AD2821 /* AddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C44651D24190DF800AD2821 /* AddViewController.storyboard */; };
 		7917F0F6239286CC0076A020 /* icon (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 7917F0F5239286CC0076A020 /* icon (1).png */; };
 		793A7F7D240BE7E200C6C0D2 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793A7F7C240BE7E200C6C0D2 /* Memo.swift */; };
 		793A7F7F240BE83600C6C0D2 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793A7F7E240BE83600C6C0D2 /* UserDefaultsModel.swift */; };
-		793CA80424112E0C0062AD7E /* AddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793CA80324112E0B0062AD7E /* AddViewController.storyboard */; };
 		793CA8072411E00E0062AD7E /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793CA8062411E00E0062AD7E /* ViewController.storyboard */; };
 		794116D023EFBE2A004ECD22 /* Memo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 794116CF23EFBE2A004ECD22 /* Memo1.png */; };
 		794116DF23EFC2B3004ECD22 /* Memoチュートリアル.008.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 794116D123EFC2AE004ECD22 /* Memoチュートリアル.008.jpeg */; };
@@ -39,7 +40,6 @@
 		79E1E78D2386B57000A4A42E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79E1E78C2386B57000A4A42E /* Main.storyboard */; };
 		79E1E78F2386B6B100A4A42E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1E78E2386B6B100A4A42E /* ViewController.swift */; };
 		79E1E7912386B6BA00A4A42E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1E7902386B6BA00A4A42E /* DetailViewController.swift */; };
-		79E1E7932386B6C600A4A42E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1E7922386B6C600A4A42E /* AddViewController.swift */; };
 		79F54BF6240FCF950050DD66 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F54BF4240FCF950050DD66 /* TableViewCell.swift */; };
 		79F54BF7240FCF950050DD66 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F54BF5240FCF950050DD66 /* TableViewCell.xib */; };
 		79F54BFA24111C910050DD66 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79F54BF924111C910050DD66 /* DetailViewController.storyboard */; };
@@ -68,6 +68,8 @@
 /* Begin PBXFileReference section */
 		0F737380E61F476A1B316677 /* Pods_MemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B3A23A2B927FED8F0A586E /* Pods-MemoAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MemoAppTests/Pods-MemoAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1C44651C24190DF800AD2821 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		1C44651D24190DF800AD2821 /* AddViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddViewController.storyboard; sourceTree = "<group>"; };
 		34B808BA8B4F14112105E77C /* Pods_MemoApp_MemoAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoApp_MemoAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B08827EF053D896DAE48C9 /* Pods-MemoApp-MemoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoApp-MemoAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MemoApp-MemoAppUITests/Pods-MemoApp-MemoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		68D01D6A2D4591C3A5A902AE /* Pods-MemoApp-MemoAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoApp-MemoAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MemoApp-MemoAppUITests/Pods-MemoApp-MemoAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,7 +77,6 @@
 		7917F0F5239286CC0076A020 /* icon (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon (1).png"; sourceTree = "<group>"; };
 		793A7F7C240BE7E200C6C0D2 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		793A7F7E240BE83600C6C0D2 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
-		793CA80324112E0B0062AD7E /* AddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddViewController.storyboard; sourceTree = "<group>"; };
 		793CA8062411E00E0062AD7E /* ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewController.storyboard; sourceTree = "<group>"; };
 		794116CF23EFBE2A004ECD22 /* Memo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Memo1.png; sourceTree = "<group>"; };
 		794116D123EFC2AE004ECD22 /* Memoチュートリアル.008.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Memoチュートリアル.008.jpeg"; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		79E1E78C2386B57000A4A42E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		79E1E78E2386B6B100A4A42E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		79E1E7902386B6BA00A4A42E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		79E1E7922386B6C600A4A42E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		79F54BF4240FCF950050DD66 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		79F54BF5240FCF950050DD66 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		79F54BF924111C910050DD66 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
@@ -147,6 +147,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C44651B24190DF800AD2821 /* AddViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1C44651C24190DF800AD2821 /* AddViewController.swift */,
+				1C44651D24190DF800AD2821 /* AddViewController.storyboard */,
+			);
+			path = AddViewController;
+			sourceTree = "<group>";
+		};
 		68673AA30127EA66AC2D9EA8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,21 +181,12 @@
 		793A7FC4240BEA4300C6C0D2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1C44651B24190DF800AD2821 /* AddViewController */,
 				793CA8052411DFFC0062AD7E /* ViewController */,
-				793CA80024111E830062AD7E /* AddViewController */,
 				79F54BF824111C6E0050DD66 /* DetailViewController */,
 				79F54BF3240FCF7F0050DD66 /* Cell */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		793CA80024111E830062AD7E /* AddViewController */ = {
-			isa = PBXGroup;
-			children = (
-				79E1E7922386B6C600A4A42E /* AddViewController.swift */,
-				793CA80324112E0B0062AD7E /* AddViewController.storyboard */,
-			);
-			path = AddViewController;
 			sourceTree = "<group>";
 		};
 		793CA8052411DFFC0062AD7E /* ViewController */ = {
@@ -418,7 +418,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				794116E923EFC2B3004ECD22 /* Memoチュートリアル.010.jpeg in Resources */,
-				793CA80424112E0C0062AD7E /* AddViewController.storyboard in Resources */,
 				794116E023EFC2B3004ECD22 /* Memoチュートリアル.012.jpeg in Resources */,
 				794116EA23EFC2B3004ECD22 /* Memoチュートリアル.001.jpeg in Resources */,
 				794116EB23EFC2B3004ECD22 /* Memoチュートリアル.006.jpeg in Resources */,
@@ -437,6 +436,7 @@
 				793CA8072411E00E0062AD7E /* ViewController.storyboard in Resources */,
 				79F54BFA24111C910050DD66 /* DetailViewController.storyboard in Resources */,
 				797FD51F238C05F800416028 /* No-Image.PNG in Resources */,
+				1C44651F24190DF900AD2821 /* AddViewController.storyboard in Resources */,
 				79E1E7662386B54100A4A42E /* Preview Assets.xcassets in Resources */,
 				79F54BF7240FCF950050DD66 /* TableViewCell.xib in Resources */,
 				794116E423EFC2B3004ECD22 /* Memoチュートリアル.007.jpeg in Resources */,
@@ -570,9 +570,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79E1E7932386B6C600A4A42E /* AddViewController.swift in Sources */,
 				79F54BF6240FCF950050DD66 /* TableViewCell.swift in Sources */,
 				793A7F7F240BE83600C6C0D2 /* UserDefaultsModel.swift in Sources */,
+				1C44651E24190DF900AD2821 /* AddViewController.swift in Sources */,
 				79E1E78F2386B6B100A4A42E /* ViewController.swift in Sources */,
 				79E1E75A2386B53D00A4A42E /* AppDelegate.swift in Sources */,
 				79E1E75F2386B53D00A4A42E /* MemoApp.xcdatamodeld in Sources */,
