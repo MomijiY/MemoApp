@@ -6,7 +6,6 @@
 //  Copyright © 2019 com.litech. All rights reserved.
 //
 
-////追加画面
 import UIKit
 import SwiftyTesseract
 var memoTitleArray = [String]()
@@ -179,6 +178,8 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
     }
 
     // MARK: - TableView delegate
+
+    // MARK: - TableView delegate
 //
 //    extension AddViewController {
 //
@@ -194,9 +195,9 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 //            }
 //        }
 //    }
-
-    // MARK: - ImagePicker delegate
-
+//
+//    // MARK: - ImagePicker delegate
+//
 //    extension AddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 //
 //        private func presentImagePicker() {
@@ -204,7 +205,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 //            imagePicker.delegate = self
 //            present(imagePicker, animated: true, completion: nil)
 //        }
-//        
+//
 //        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 //            defer {
 //                picker.dismiss(animated: true, completion: nil)
@@ -217,6 +218,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 //            picker.dismiss(animated: true, completion: nil)
 //        }
 //    }
+
 
 //var MemonoNakami = [String]()
 ////var MemoImageNakami = [UIImage]()

@@ -6,7 +6,6 @@ target 'MemoApp' do
   use_frameworks!
 
   # Pods for MemoApp
-pod 'ImageViewer'
 pod 'SwiftyTesseract', '~> 2.0'
   target 'MemoAppTests' do
     inherit! :search_paths

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M54-ym-4Rw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PyT-7a-F4X">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -19,38 +19,47 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58O-f7-lF1">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="メモ一覧" id="0Bn-rj-9S0">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QBY-vc-7VC">
-                                            <connections>
-                                                <action selector="TapAddButton:" destination="M54-ym-4Rw" id="jZb-hx-5yb"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="MMz-s0-Qot" secondAttribute="bottom" id="1rE-0O-ujZ"/>
-                            <constraint firstItem="MMz-s0-Qot" firstAttribute="leading" secondItem="Qbl-tc-5zJ" secondAttribute="leading" id="3WK-o8-O2F"/>
-                            <constraint firstItem="MMz-s0-Qot" firstAttribute="top" secondItem="58O-f7-lF1" secondAttribute="bottom" id="Gh9-mT-gXe"/>
-                            <constraint firstItem="58O-f7-lF1" firstAttribute="leading" secondItem="Qbl-tc-5zJ" secondAttribute="leading" id="Mov-6o-8wm"/>
-                            <constraint firstItem="MMz-s0-Qot" firstAttribute="trailing" secondItem="Qbl-tc-5zJ" secondAttribute="trailing" id="SbA-Do-E4c"/>
-                            <constraint firstItem="58O-f7-lF1" firstAttribute="trailing" secondItem="Qbl-tc-5zJ" secondAttribute="trailing" id="Tc7-Nk-sq9"/>
-                            <constraint firstItem="58O-f7-lF1" firstAttribute="top" secondItem="Qbl-tc-5zJ" secondAttribute="top" id="dMr-Xi-qLv"/>
-                            <constraint firstItem="MMz-s0-Qot" firstAttribute="top" secondItem="58O-f7-lF1" secondAttribute="bottom" id="hQ7-Lr-nH0"/>
+                            <constraint firstItem="MMz-s0-Qot" firstAttribute="trailing" secondItem="Qbl-tc-5zJ" secondAttribute="trailing" id="H2T-ge-MT8"/>
+                            <constraint firstItem="MMz-s0-Qot" firstAttribute="top" secondItem="Qbl-tc-5zJ" secondAttribute="top" id="Obj-1R-FpT"/>
+                            <constraint firstAttribute="bottom" secondItem="MMz-s0-Qot" secondAttribute="bottom" id="jm6-9u-AMz"/>
+                            <constraint firstItem="MMz-s0-Qot" firstAttribute="leading" secondItem="Qbl-tc-5zJ" secondAttribute="leading" id="n6N-Es-1m2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qbl-tc-5zJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JLj-Kj-iCs"/>
+                    <navigationItem key="navigationItem" id="JLj-Kj-iCs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mnq-2R-yAO">
+                            <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="TapAddButton:" destination="M54-ym-4Rw" id="AJg-cP-Hpn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="MMz-s0-Qot" id="y0V-8N-qS7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2F-46-5Ia" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2868.115942028986" y="85.714285714285708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2IY-iI-Lhn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="PyT-7a-F4X" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p6h-AD-J3D">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="M54-ym-4Rw" kind="relationship" relationship="rootViewController" id="4fb-VM-cpb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o31-Xh-d5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="85.714285714285708"/>
         </scene>

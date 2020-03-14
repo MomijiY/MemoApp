@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            UserDefaults.standard.set(true, forKey: "launchedBefore")
 //
 //            //チュートリアル用のviewcontrollerのインスタンスを用意してwindowに渡す
-//            let tutorialVC = storyboard.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
+//            let tutorialVC = storyboard.instantiateViewController(withIdentifier: "FirstTViewController") as! ViewController
 //            self.window = UIWindow(frame: UIScreen.main.bounds)
 //            self.window?.rootViewController = tutorialVC
 //        }

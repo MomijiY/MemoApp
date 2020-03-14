@@ -52,13 +52,7 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
         let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
         kbToolBar.items = [spacer, commitButton]
         contentTextView.inputAccessoryView = kbToolBar
-        // - Label
-        titletextField.text = memo.title
-        contentTextView.text = memo.content
-        // - ImageView
-        if let image = model.loadImage(id: memo.id) {
-            imageView.image = image
-        }
+        configureUI()
     }
         @IBAction func tappedSwiftyTesseract(_ sender: Any) {
             guard let image = imageView.image else { return }
@@ -157,19 +151,22 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
 
 // MARK: - Configure
 
-//extension DetailViewController {
-//
-//    private func configureUI() {
-//        // - Label
-//        titletextField.text = memo.title
-//        contentTextView.text = memo.content
-//        // - ImageView
-//        if let image = model.loadImage(id: memo.id) {
-//            imageView.image = image
-//        }
-//    }
-//
-//}
+extension DetailViewController {
+
+    private func configureUI() {
+        print("titleTextField\(titletextField.text!)")
+        print(contentTextView.text!)
+        
+        // - Label
+        titletextField.text = memo.title
+        contentTextView.text = memo.content
+        // - ImageView
+        if let image = model.loadImage(id: memo.id) {
+            imageView.image = image
+        }
+    }
+
+}
 extension DetailViewController {
     
     private func saveMemo() {
