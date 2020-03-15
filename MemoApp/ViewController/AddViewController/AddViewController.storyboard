@@ -135,7 +135,7 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="追加画面" id="VRg-tS-LYf">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9kH-HR-enW">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9kH-HR-enW">
                                             <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="Save" destination="Ker-8E-RJ1" id="Kee-3O-BDJ"/>

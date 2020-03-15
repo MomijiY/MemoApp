@@ -123,12 +123,24 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return true
     }
     
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        if editingStyle == UITableViewCell.EditingStyle.delete {
-//            cellList[indexPath.section].remove(at: indexPath.row)
-//            tableView.reloadData()
-//        }
-//    }
+    //追記　スワイプで削除する関数
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let kStoredMemosKey: String = "kStoredMemosKey"
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            
+            //追記 画像削除
+            let id = dataSource[indexPath.row].id
+            UserDefaults.standard.removeObject(forKey: id)
+            
+            //追記 メモ削除
+            dataSource.remove(at: indexPath.row)
+            guard let data = try? JSONEncoder().encode(dataSource) else { return }
+            UserDefaults.standard.set(data, forKey: kStoredMemosKey)
+
+            self.tableView.reloadData()
+        }
+    }
+
 }
 
 //import UIKit

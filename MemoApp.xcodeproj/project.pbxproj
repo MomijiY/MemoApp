@@ -181,6 +181,9 @@
 		79B120D4241B0605006832A3 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				7969B904241CE4E30034226B /* ThirdTViewController.swift */,
+				79B120D5241B0625006832A3 /* FirstTViewController.swift */,
+				79E1E78C2386B57000A4A42E /* Main.storyboard */,
 				79B120D9241B9321006832A3 /* Tutorial Image */,
 			);
 			path = Tutorial;
@@ -189,9 +192,6 @@
 		79B120D9241B9321006832A3 /* Tutorial Image */ = {
 			isa = PBXGroup;
 			children = (
-				7969B904241CE4E30034226B /* ThirdTViewController.swift */,
-				79B120D5241B0625006832A3 /* FirstTViewController.swift */,
-				79E1E78C2386B57000A4A42E /* Main.storyboard */,
 				79B120DD241B95A7006832A3 /* 文書ドキュメント.png */,
 				79B120DA241B932A006832A3 /* 写真アイコン9.png */,
 			);

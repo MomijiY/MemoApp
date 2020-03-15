@@ -1488,7 +1488,7 @@
         <!--FirstTViewController-->
         <scene sceneID="Vhe-AD-8Ak">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="iOP-b8-RP9" userLabel="FirstTViewController" customClass="First_TViewController" customModule="MemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstTViewController" title="FirstTViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iOP-b8-RP9" userLabel="FirstTViewController" customClass="FirstTViewController" customModule="MemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OdB-bo-6HT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1702,8 +1702,7 @@
         <image name="文書ドキュメント.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fll-hj-czI"/>
-        <segue reference="lAe-9q-jCC"/>
+        <segue reference="IVo-Tr-qLM"/>
         <segue reference="MTC-l3-bqB"/>
         <segue reference="fBV-Bn-61K"/>
         <segue reference="Vyi-hd-r3E"/>

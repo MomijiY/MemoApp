@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ViewController-->
+        <!--HomeViewController-->
         <scene sceneID="YOu-nh-knZ">
             <objects>
-                <viewController storyboardIdentifier="ViewController" title="ViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M54-ym-4Rw" customClass="ViewController" customModule="MemoApp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" title="HomeViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M54-ym-4Rw" customClass="ViewController" customModule="MemoApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Hq-Lq-rZj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
         <!--Navigation Controller-->
         <scene sceneID="2IY-iI-Lhn">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="PyT-7a-F4X" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="PyT-7a-F4X" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p6h-AD-J3D">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

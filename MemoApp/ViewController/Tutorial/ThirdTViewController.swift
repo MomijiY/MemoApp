@@ -17,8 +17,9 @@ class ThirdTViewController: UIViewController {
     }
     
     @IBAction func finishButtonTapped() {
-        let vc = ViewController.instance()
-        navigationController?.pushViewController(vc, animated: true)
+//        let storyboard: UIStoryboard = self.storyboard!
+//        let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+//        self.present(vc, animated: true, completion: nil)
     }
     
 }
