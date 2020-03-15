@@ -28,11 +28,8 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
     // MARK: Lifecycle
 
     static func instance(_ memo: Memo) -> DetailViewController {
-        print("before vc")
         let vc = UIStoryboard(name: "DetailViewController", bundle: nil).instantiateInitialViewController() as! DetailViewController
-        print("after vc")
         vc.memo = memo
-        print("vc.memo = memo")
         return vc
     }
     
@@ -129,9 +126,9 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
             self.present(activitycontroller, animated: true, completion: nil)
         }
     
-    @IBAction func SaveButton(_  sender: UIButton) {
-        saveMemo()
-    }
+//    @IBAction func SaveButton(_  sender: UIButton) {
+//        saveMemo()
+//    }
     
     @objc private func onTapSaveButton(_ sender: UIBarButtonItem) {
         saveMemo()
@@ -154,8 +151,8 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
 extension DetailViewController {
 
     private func configureUI() {
-        print("titleTextField\(titletextField.text!)")
-        print(contentTextView.text!)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onTapSaveButton(_:)))
         
         // - Label
         titletextField.text = memo.title
@@ -173,10 +170,11 @@ extension DetailViewController {
         guard let title = titletextField.text,
             let content = contentTextView.text else { return }
         
-
+        // Save memo
         let memo = Memo(id: UUID().uuidString, title: title, content: content)
         if let storedMemos = model.loadMemos() {
             var newMemos = storedMemos
+            newMemos.append(memo)
             model.saveMemos(newMemos)
         } else {
             model.saveMemos([memo])
@@ -187,6 +185,7 @@ extension DetailViewController {
             model.saveImage(id: memo.id, image: image)
         }
         
+        memoTitleArray = [title]
         let storyboard: UIStoryboard = UIStoryboard(name: "ViewController", bundle: nil)
         let next: UIViewController = storyboard.instantiateInitialViewController() as! UIViewController
         present(next, animated: true, completion: nil)

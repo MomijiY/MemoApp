@@ -47,10 +47,7 @@ final class ViewController: UIViewController {
     
     @objc private func onTapAddButton() {
         let vc = AddViewController.instance()
-//        navigationController?.pushViewController(vc, animated: true)
-        var sb: UIStoryboard! = UIStoryboard(name: "AddViewController", bundle: nil)
-        let nv = sb.instantiateViewController(withIdentifier: "AddViewController")
-        self.present(nv, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func TapAddButton(_ sender: UIBarButtonItem) {
@@ -86,10 +83,6 @@ extension ViewController {
         guard let memos = model.loadMemos() else { return }
         self.dataSource = memos
     }
-//    private func deleteMemos() {
-//        guard let memos = model.deleteMemos() else { return }
-//        self.dataSource = memos
-//    }
 }
 
 // MARK: - TableView dataSource, delegate
@@ -114,25 +107,23 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         let memo = dataSource[indexPath.row]
         let vc = DetailViewController.instance(memo)
-        var sb: UIStoryboard! = UIStoryboard(name: "DetailViewController", bundle: nil)
-        let nv = sb.instantiateViewController(withIdentifier: "DetailViewController")
-        self.present(nv, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     //セルの削除許可を設定
     func tableView(_ tableView: UITableView,canEditRowAt indexPath: IndexPath) -> Bool{
         return true
     }
     
-    //追記　スワイプで削除する関数
+    //　スワイプで削除する関数
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let kStoredMemosKey: String = "kStoredMemosKey"
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
-            //追記 画像削除
+            //画像削除
             let id = dataSource[indexPath.row].id
             UserDefaults.standard.removeObject(forKey: id)
             
-            //追記 メモ削除
+            //メモ削除
             dataSource.remove(at: indexPath.row)
             guard let data = try? JSONEncoder().encode(dataSource) else { return }
             UserDefaults.standard.set(data, forKey: kStoredMemosKey)

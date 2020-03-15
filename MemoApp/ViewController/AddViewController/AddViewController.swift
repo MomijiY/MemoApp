@@ -17,7 +17,6 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
     //    @IBOutlet weak var contentTextField: UITextField!
         @IBOutlet weak var contentTextView: UITextView!
         @IBOutlet weak var imageView: UIImageView!
-        @IBOutlet weak var navigationBar: UINavigationBar!
 //        @IBOutlet weak var tableView: UITableView!
         // MARK: Properties
         
@@ -53,7 +52,7 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 
 //            //first image
 //            imageView.image = UIImage(named: "No-Image.PNG")
-//            configureUI()
+            configureUI()
         }
         
         @IBAction func tappedSwiftyTesseract(_ sender: Any) {
@@ -124,14 +123,8 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 //        @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
 ////            saveMemo()
 //        }
-        @objc private func onTapSaveButton() {
+    @objc private func onTapSaveButton(_ sender: UIBarButtonItem) {
             saveMemo()
-//            let vc = ViewController.instance()
-//            navigationController?.pushViewController(vc, animated: true)
-        }
-    
-        @IBAction func Save() {
-            onTapSaveButton()
         }
     }
 
@@ -139,11 +132,11 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 
     extension AddViewController {
 
-//        private func configureUI() {
-////            tableView.delegate = self
-//            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onTapSaveButton(_:)))
-//        }
-//
+        private func configureUI() {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save
+                , target: self, action: #selector(onTapSaveButton(_:)))
+        }
+
     }
 
 
