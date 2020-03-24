@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ker-8E-RJ1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ker-8E-RJ1">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,7 +56,7 @@
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Hdn-IC-BNH">
                                         <rect key="frame" x="17" y="28.5" width="390" height="76"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Hdn-IC-BNH" secondAttribute="height" multiplier="195:38" id="01x-El-zy2"/>
                                         </constraints>
@@ -82,9 +82,6 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tot-Ov-da2">
                                         <rect key="frame" x="8" y="104" width="399" height="293"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Tot-Ov-da2" secondAttribute="height" multiplier="399:293" id="WeQ-a0-LL7"/>
-                                        </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCq-HT-4F2">
                                         <rect key="frame" x="8" y="66" width="399" height="30"/>
@@ -119,18 +116,18 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="hwC-VZ-WES" firstAttribute="leading" secondItem="IkD-KH-x2R" secondAttribute="leading" constant="8" id="2IH-y0-cZd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tot-Ov-da2" secondAttribute="trailing" constant="7" id="2ao-Y4-aqi"/>
                                     <constraint firstItem="QQe-MP-Bzt" firstAttribute="leading" secondItem="IkD-KH-x2R" secondAttribute="leading" constant="8" id="3aF-Qc-Bcr"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tot-Ov-da2" secondAttribute="bottom" constant="8.5" id="5DJ-72-hIq"/>
                                     <constraint firstAttribute="trailing" secondItem="XCq-HT-4F2" secondAttribute="trailing" constant="7" id="6ma-Kz-rxA"/>
-                                    <constraint firstItem="Tot-Ov-da2" firstAttribute="leading" secondItem="IkD-KH-x2R" secondAttribute="leading" constant="8" id="HVS-Se-5O2"/>
-                                    <constraint firstItem="Tot-Ov-da2" firstAttribute="top" secondItem="XCq-HT-4F2" secondAttribute="bottom" constant="8" id="JEo-h7-BSR"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tot-Ov-da2" secondAttribute="trailing" constant="7" id="JWs-uW-QeT"/>
                                     <constraint firstAttribute="trailing" secondItem="QQe-MP-Bzt" secondAttribute="trailing" constant="7" id="Q09-Mh-vl8"/>
                                     <constraint firstItem="XCq-HT-4F2" firstAttribute="top" secondItem="QQe-MP-Bzt" secondAttribute="bottom" constant="8" id="QC0-DC-46e"/>
                                     <constraint firstItem="hwC-VZ-WES" firstAttribute="top" secondItem="IkD-KH-x2R" secondAttribute="top" id="SIN-xe-WHo"/>
                                     <constraint firstAttribute="trailing" secondItem="hwC-VZ-WES" secondAttribute="trailing" constant="8" id="ahA-Nn-g0G"/>
                                     <constraint firstItem="QQe-MP-Bzt" firstAttribute="top" secondItem="hwC-VZ-WES" secondAttribute="bottom" constant="7" id="fCh-a3-LuF"/>
+                                    <constraint firstItem="Tot-Ov-da2" firstAttribute="leading" secondItem="IkD-KH-x2R" secondAttribute="leading" constant="8" id="pn2-XG-HI1"/>
                                     <constraint firstItem="XCq-HT-4F2" firstAttribute="leading" secondItem="IkD-KH-x2R" secondAttribute="leading" constant="8" id="uae-nI-zko"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tot-Ov-da2" secondAttribute="bottom" constant="8.5" id="xVr-Iy-uKo"/>
+                                    <constraint firstItem="Tot-Ov-da2" firstAttribute="top" secondItem="XCq-HT-4F2" secondAttribute="bottom" constant="8" id="zmq-pZ-q6u"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyS-e0-ct9">

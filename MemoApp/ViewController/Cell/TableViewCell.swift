@@ -15,6 +15,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var cellImageView: UIImageView!
+    @IBOutlet private weak var tagColor: UILabel!
     // MARK: Static properties
 
     static let reuseIdentifier = "TableViewCell"
@@ -39,6 +40,35 @@ class TableViewCell: UITableViewCell {
     func setupCell(title: String, content: String) {
         titleLabel.text = title
         contentLabel.text = content
-        
+    }
+    
+    func tagColor(color: UIColor) {
+        if tagColorUI == UIColor.red {
+            tagColor.backgroundColor = UIColor.red
+        }
+        else if tagColorUI == UIColor.orange {
+            tagColor.backgroundColor = UIColor.orange
+        }
+        else if tagColorUI == UIColor.yellow {
+            tagColor.backgroundColor = UIColor.yellow
+        }
+        else if tagColorUI == UIColor.systemTeal {
+            tagColor.backgroundColor = UIColor.systemTeal
+        }
+        else if tagColorUI == UIColor.blue {
+            tagColor.backgroundColor = UIColor.blue
+        }
+        else if tagColorUI == UIColor.green {
+            tagColor.backgroundColor = UIColor.green
+        }
+        else if tagColorUI == UIColor.purple {
+            tagColor.backgroundColor = UIColor.purple
+        }
+        else if tagColorUI == UIColor.brown {
+            tagColor.backgroundColor = UIColor.brown
+        }
+        else if tagColorUI == UIColor.black {
+            tagColor.backgroundColor = UIColor.black
+        }
     }
 }

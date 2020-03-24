@@ -153,6 +153,7 @@ extension DetailViewController {
     private func configureUI() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onTapSaveButton(_:)))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 145, blue: 147, alpha: 1.0)
         
         // - Label
         titletextField.text = memo.title
@@ -171,18 +172,21 @@ extension DetailViewController {
             let content = contentTextView.text else { return }
         
         // Save memo
-        let memo = Memo(id: UUID().uuidString, title: title, content: content)
+        let memo = Memo(id: self.memo.id, title: title, content: content)
         if let storedMemos = model.loadMemos() {
             var newMemos = storedMemos
-            newMemos.append(memo)
+            
+            //追記　同じIDのメモがある場合データを差し替える処理
+            for (i, m) in newMemos.enumerated() {
+                if m.id == memo.id {
+                    newMemos[i] = memo
+                }
+            }
+            
+            //newMemos.append(memo)
             model.saveMemos(newMemos)
         } else {
             model.saveMemos([memo])
-        }
-        
-        // Save image
-        if let image = imageView.image {
-            model.saveImage(id: memo.id, image: image)
         }
         
         memoTitleArray = [title]

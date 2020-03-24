@@ -13,101 +13,99 @@ var memoTitleArray = [String]()
 class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
         // MARK: IBOutlet
         
-        @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!
     //    @IBOutlet weak var contentTextField: UITextField!
-        @IBOutlet weak var contentTextView: UITextView!
-        @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var groupButton: UIButton!
+    @IBOutlet weak var groupLabel: UILabel!
 //        @IBOutlet weak var tableView: UITableView!
         // MARK: Properties
+    private let model = UserDefaultsModel()
+    private var dataSource: [Memo] = [Memo]()
+    let swiftyTesseract = SwiftyTesseract(language: RecognitionLanguage.japanese)
+    // MARK: Lifecycle
         
-        private let model = UserDefaultsModel()
-        let swiftyTesseract = SwiftyTesseract(language: RecognitionLanguage.japanese)
-        
-        // MARK: Lifecycle
-        
-        static func instance() -> AddViewController {
-            let vc = UIStoryboard(name: "AddViewController", bundle: nil).instantiateInitialViewController() as! AddViewController
-            return vc
-        }
+    static func instance() -> AddViewController {
+        let vc = UIStoryboard(name: "AddViewController", bundle: nil).instantiateInitialViewController() as! AddViewController
+        return vc
+    }
     
 
-        @objc func commitButtonTapped() {
-            self.view.endEditing(true)
-        }
+    @objc func commitButtonTapped() {
+        self.view.endEditing(true)
+    }
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
-
-            // donebuttonの実装
-            let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-            kbToolBar.barStyle = UIBarStyle.default // スタイルを設定
-            kbToolBar.sizeToFit() // 画面幅に合わせてサイズを変更
-            // スペーサー
-            let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,target: self, action: nil)
-            // 閉じるボタン
-            let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
-            kbToolBar.items = [spacer, commitButton]
-            titleTextField.inputAccessoryView = kbToolBar
-            contentTextView.inputAccessoryView = kbToolBar
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // donebuttonの実装
+        let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+        kbToolBar.barStyle = UIBarStyle.default // スタイルを設定
+        kbToolBar.sizeToFit() // 画面幅に合わせてサイズを変更
+        // スペーサー
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,target: self, action: nil)
+        // 閉じるボタン
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
+        kbToolBar.items = [spacer, commitButton]
+        titleTextField.inputAccessoryView = kbToolBar
+        contentTextView.inputAccessoryView = kbToolBar
+//        loadMemos()
 //            //first image
 //            imageView.image = UIImage(named: "No-Image.PNG")
-            configureUI()
-        }
+        configureUI()
+    }
         
-        @IBAction func tappedSwiftyTesseract(_ sender: Any) {
-            guard let image = imageView.image else { return }
-            
-            swiftyTesseract.performOCR(on: image) { recognizedString in
-                guard let text = recognizedString else { return }
-                print("\(text)")
-                self.contentTextView.text! = text
-            }
+    @IBAction func tappedSwiftyTesseract(_ sender: Any) {
+        guard let image = imageView.image else { return }
+        
+        swiftyTesseract.performOCR(on: image) { recognizedString in
+            guard let text = recognizedString else { return }
+            print("\(text)")
+            self.contentTextView.text! = text
         }
+    }
     
-        @IBAction func launchCamera(_ sender: UIButton) {
-                let camera = UIImagePickerController.SourceType.camera
-                if UIImagePickerController.isSourceTypeAvailable(camera) {
-                    let picker = UIImagePickerController()
-                    picker.sourceType = camera
-                    picker.delegate = self
-                    self.present(picker, animated: true)
-                }
-                imageView.isHidden = false
-                // imageButton.isHidden = true
+    @IBAction func launchCamera(_ sender: UIButton) {
+            let camera = UIImagePickerController.SourceType.camera
+            if UIImagePickerController.isSourceTypeAvailable(camera) {
+                let picker = UIImagePickerController()
+                picker.sourceType = camera
+                picker.delegate = self
+                self.present(picker, animated: true)
             }
-        //カメラロールから写真を選択する処理
-        @IBAction func choosePicture() {
-            // カメラロールが利用可能か？
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                // 写真を選ぶビュー
-                let pickerView = UIImagePickerController()
-                // 写真の選択元をカメラロールにする
-                // 「.camera」にすればカメラを起動できる
-                pickerView.sourceType = .photoLibrary
-                // デリゲート
-                pickerView.delegate = self
-                // ビューに表示
-                self.present(pickerView, animated: true)
-            }
+            imageView.isHidden = false
+            // imageButton.isHidden = true
         }
-    
-    //
-        //ユーザーが撮影し終わった時の処理
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    
-                    imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-            //        fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-                    let image = imageView.image
-                    let pngImageData:Data = image!.pngData()!
-                    let documentsURL:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                    let fileURL:URL = documentsURL.appendingPathComponent("image.png")
-                    do{
-                        try pngImageData.write(to: fileURL)
-                    }catch{
-                        print("書き込み失敗")
-                    }
-                    dismiss(animated: true, completion: nil)
+    //カメラロールから写真を選択する処理
+    @IBAction func choosePicture() {
+        // カメラロールが利用可能か？
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            // 写真を選ぶビュー
+            let pickerView = UIImagePickerController()
+            // 写真の選択元をカメラロールにする
+            // 「.camera」にすればカメラを起動できる
+            pickerView.sourceType = .photoLibrary
+            // デリゲート
+            pickerView.delegate = self
+            // ビューに表示
+            self.present(pickerView, animated: true)
+        }
+    }
+    //        //ユーザーが撮影し終わった時の処理
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any]) {
+        imageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            //        fatalError("Expected a dictionary containing an image, but was provided the following:\(info)")
+        let image = imageView.image
+        let pngImageData:Data = image!.pngData()!
+        let documentsURL:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL:URL = documentsURL.appendingPathComponent("image.png")
+        do{
+            try pngImageData.write(to: fileURL)
+        }catch{
+            print("書き込み失敗")
+        }
+        dismiss(animated: true, completion: nil)
     
                     //編集機能を表示させたい場合
                     //UIImagePickerControllerEditedImageはallowsEditingをYESにした場合に用いる。
@@ -116,8 +114,15 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
     //                if info[UIImagePickerController.InfoKey.originalImage] != nil {
     //                    let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
     //                    //画像を設定する
-                        imageView.image = image
-        }
+        imageView.image = image
+    }
+    func showAlert(title:String){
+            let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+    
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    
+            self.present(alert, animated: true, completion:nil)
+    }
     
     
 //        @IBAction func tappedSaveButton(sender: UIBarButtonItem) {
@@ -130,45 +135,52 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 
     // MARK: - Configure
 
-    extension AddViewController {
+extension AddViewController {
 
         private func configureUI() {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save
                 , target: self, action: #selector(onTapSaveButton(_:)))
+//            navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 145, blue: 147, alpha: 1.0)
         }
 
     }
 
 
     // MARK: - Model
-
-    extension AddViewController {
+extension AddViewController {
         
         private func saveMemo() {
-            guard let title = titleTextField.text,
-                let content = contentTextView.text else { return }
             
-            // Save memo
-            let memo = Memo(id: UUID().uuidString, title: title, content: content)
-            if let storedMemos = model.loadMemos() {
-                var newMemos = storedMemos
-                newMemos.append(memo)
-                model.saveMemos(newMemos)
-            } else {
-                model.saveMemos([memo])
-            }
+                guard let title = titleTextField.text,
+                    let content = contentTextView.text else { return }
+                
+                // Save memo
+                let memo = Memo(id: UUID().uuidString, title: title, content: content)
+                if let storedMemos = model.loadMemos() {
+                    var newMemos = storedMemos
+                    newMemos.append(memo)
+                    model.saveMemos(newMemos)
+                } else {
+                    model.saveMemos([memo])
+                }
+                
+                // Save image
+                if let image = imageView.image {
+                    model.saveImage(id: memo.id, image: image)
+                }
+                
+                memoTitleArray = [title]
+                let storyboard: UIStoryboard = UIStoryboard(name: "ViewController", bundle: nil)
+                let next: UIViewController = storyboard.instantiateInitialViewController() as! UIViewController
+                present(next, animated: true, completion: nil)
             
-            // Save image
-            if let image = imageView.image {
-                model.saveImage(id: memo.id, image: image)
-            }
-            
-            memoTitleArray = [title]
-            let storyboard: UIStoryboard = UIStoryboard(name: "ViewController", bundle: nil)
-            let next: UIViewController = storyboard.instantiateInitialViewController() as! UIViewController
-            present(next, animated: true, completion: nil)
+
         }
     }
+//    private func loadMemos() {
+//        guard let memos = model.loadGroupMemos() else { return }
+//    }
+
 
     // MARK: - TableView delegate
 

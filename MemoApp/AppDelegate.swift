@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+//
 //        //使用するStoryboardのインスタンス化
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            UserDefaults.standard.set(true, forKey: "launchedBefore")
 //
 //            //チュートリアル用のviewcontrollerのインスタンスを用意してwindowに渡す
-//            let tutorialVC = storyboard.instantiateViewController(withIdentifier: "FirstTViewController") as! ViewController
+//            let tutorialVC = storyboard.instantiateViewController(withIdentifier: "first") as! FirstViewController
 //            self.window = UIWindow(frame: UIScreen.main.bounds)
 //            self.window?.rootViewController = tutorialVC
 //        }
