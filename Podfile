@@ -7,6 +7,10 @@ target 'MemoApp' do
 
   # Pods for MemoApp
 pod 'SwiftyTesseract', '~> 2.0'
+pod 'ImageViewer'
+pod 'TinyConstraints'
+pod 'Siren'
+
   target 'MemoAppTests' do
     inherit! :search_paths
     # Pods for testing

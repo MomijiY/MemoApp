@@ -37,8 +37,12 @@ class PageViewController: UIPageViewController {
         let pageViewH = storyboard!.instantiateViewController(withIdentifier: "eighth") as! eighthViewController
         let pageViewI = storyboard!.instantiateViewController(withIdentifier: "nineth") as! ninethViewController
         let pageViewJ = storyboard!.instantiateViewController(withIdentifier: "tenth") as! tenthViewController
-        let pageViewK = storyboard!.instantiateViewController(withIdentifier: "last") as! lastViewController
-        pageViewControllers = [pageViewA, pageViewB, pageViewC, pageViewD, pageViewE, pageViewF,pageViewG, pageViewH, pageViewI, pageViewJ, pageViewK]
+        let pageViewJ2 = storyboard!.instantiateViewController(withIdentifier: "tenth2") as! tenth2ViewController
+         let pageViewK = storyboard!.instantiateViewController(withIdentifier: "eleventh") as! eleventhViewController
+         let pageViewL = storyboard!.instantiateViewController(withIdentifier: "twelth") as! twelthViewController
+         let pageViewM = storyboard!.instantiateViewController(withIdentifier: "thirteenth") as! thirteenthViewController
+        let pageViewN = storyboard!.instantiateViewController(withIdentifier: "last") as! lastViewController
+        pageViewControllers = [pageViewA, pageViewB, pageViewC, pageViewD, pageViewE, pageViewF,pageViewG, pageViewH, pageViewI, pageViewJ,pageViewJ2, pageViewK, pageViewL, pageViewM, pageViewN]
 
         //最初に表示するページの指定
         self.setViewControllers([pageViewControllers[0]], direction: .forward, animated: true, completion: nil)

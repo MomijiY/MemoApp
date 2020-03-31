@@ -9,7 +9,8 @@
 import UIKit
 
 var tagColorUI = UIColor()
-
+let w = UIScreen.main.bounds.size.width
+let h = UIScreen.main.bounds.size.height
 final class ViewController: UIViewController, UISearchResultsUpdating {
     
     // MARK: IBOutlet
@@ -25,9 +26,10 @@ final class ViewController: UIViewController, UISearchResultsUpdating {
     @IBOutlet weak var taggreen: UIButton!
     @IBOutlet weak var tagBrown: UIButton!
     @IBOutlet weak var tagBlack: UIButton!
+    @IBOutlet weak var tagWhite: UIButton!
     let deviceId = UIDevice.current.identifierForVendor!.uuidString
 
-    var searchResults:[String] = []
+    var searchResults:[Memo] = [Memo]()
     var searchController = UISearchController()
     
     // MARK: Properties
@@ -39,6 +41,9 @@ final class ViewController: UIViewController, UISearchResultsUpdating {
         }
     }
     
+    private var memo: Memo!
+    var changeColortag = Int()
+    
     // MARK: Lifecycle
     
     static func instance() -> ViewController {
@@ -48,6 +53,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         groupView.isHidden = true
         tableView.tableFooterView = UIView()
         configureUI()
@@ -62,6 +68,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating {
         tableView.tableHeaderView = searchController.searchBar
         
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -91,46 +98,86 @@ final class ViewController: UIViewController, UISearchResultsUpdating {
     @IBAction func onTapTagRed(_ sender: UIButton) {
         tagColorUI = UIColor.red
         groupView.isHidden = true
+        changeColor(color: "red")
     }
 
     @IBAction func onTapTagOrange(_ sender: UIButton) {
         tagColorUI = UIColor.orange
         groupView.isHidden = true
+        changeColor(color: "orange")
     }
     
     @IBAction func onTapTagYellow(_ sender: UIButton) {
         tagColorUI = UIColor.yellow
         groupView.isHidden = true
+        changeColor(color: "yellow")
     }
     
     @IBAction func onTapTagSkyblue(_ sender: UIButton) {
         tagColorUI = UIColor.systemTeal
         groupView.isHidden = true
+        changeColor(color: "systemTeal")
     }
     
     @IBAction func onTapTagBlue(_ sender: UIButton) {
         tagColorUI = UIColor.blue
         groupView.isHidden = true
+        changeColor(color: "blue")
     }
     
     @IBAction func onTapTagGreen(_ sender: UIButton) {
         tagColorUI = UIColor.green
         groupView.isHidden = true
+        changeColor(color: "green")
     }
     
     @IBAction func onTapTagPurple(_ sender: UIButton) {
         tagColorUI = UIColor.purple
         groupView.isHidden = true
+        changeColor(color: "purple")
     }
     
     @IBAction func onTapTagBrown(_ sender: UIButton) {
         tagColorUI = UIColor.brown
         groupView.isHidden = true
+        changeColor(color: "brown")
     }
     
     @IBAction func onTapTagBlack(_ sender: UIButton) {
         tagColorUI = UIColor.black
         groupView.isHidden = true
+        changeColor(color: "black")
+    }
+    @IBAction func onTapTagWhite(_ sender: UIButton) {
+        groupView.isHidden = true
+        changeColor(color: "white")
+    }
+    @IBAction func onTapClose(_ sender: UIButton) {
+        groupView.isHidden = true
+    }
+    
+    func changeColor(color: String) {
+        // Save memo
+        let memo = Memo(id: self.memo.id, title: self.memo.title, content: self.memo.content, color: color)
+        if let storedMemos = model.loadMemos() {
+            var newMemos = storedMemos
+            
+            //追記　同じIDのメモがある場合データを差し替える処理
+            for (i, m) in newMemos.enumerated() {
+                if m.id == memo.id {
+                    newMemos[i] = memo
+                }
+            }
+            
+            //newMemos.append(memo)
+            model.saveMemos(newMemos)
+            dataSource[changeColortag] = memo
+            self.tableView.reloadData()
+        } else {
+            model.saveMemos([memo])
+            self.tableView.reloadData()
+        }
+        
     }
     
 }
@@ -146,6 +193,9 @@ extension ViewController {
         groupView.layer.shadowOpacity = 0.6
         groupView.layer.shadowRadius = 4
 
+        tagWhite.layer.cornerRadius = 10
+        tagWhite.layer.borderWidth = 0.5
+        tagWhite.layer.borderColor =  UIColor.black.cgColor
         tagRed.layer.cornerRadius = 10
         tagOrange.layer.cornerRadius = 10
         tagYellow.layer.cornerRadius = 10
@@ -181,7 +231,13 @@ extension ViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive {
+//        if searchController.isActive {
+//            return searchResults.count
+//        }else {
+//            return dataSource.count
+//        }
+        print("searchResults.count: \(searchResults.count)")
+        if searchController.searchBar.text?.count != 0 {
             return searchResults.count
         }else {
             return dataSource.count
@@ -191,16 +247,42 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var memoArray = [Memo]()
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
-        let memo = dataSource[indexPath.row]
-        if searchController.isActive {
-            cell.setupCell(title: memo.title, content: memo.content)
-            print(dataSource.count)
-//            cell.textLabel!.text = "\(searchResults[indexPath.row])"
+        if searchResults.count != 0 {
+            let memo = searchResults[indexPath.row]
+            if searchController.isActive {
+                cell.setupCell(title: memo.title, content: memo.content)
+            } else {
+                cell.setupCell(title: memo.title, content: memo.content)
+            }
+            
+            cell.tagColor(color: memo.color)
+            
+            memoArray.append(memo)
         } else {
-            cell.setupCell(title: memo.title, content: memo.content)
+            let memo = dataSource[indexPath.row]
+            if searchController.isActive {
+                cell.setupCell(title: memo.title, content: memo.content)
+                print(dataSource.count)
+            } else {
+                cell.setupCell(title: memo.title, content: memo.content)
+            }
+            
+            cell.tagColor(color: memo.color)
+            
+            memoArray.append(memo)
         }
-        
-        memoArray.append(memo)
+//        let memo = dataSource[indexPath.row]
+//        if searchController.isActive {
+//            cell.setupCell(title: memo.title, content: memo.content)
+//            print(dataSource.count)
+////            cell.textLabel!.text = "\(searchResults[indexPath.row])"
+//        } else {
+//            cell.setupCell(title: memo.title, content: memo.content)
+//        }
+//
+//        cell.tagColor(color: memo.color)
+//
+//        memoArray.append(memo)
         return cell
     }
     
@@ -218,12 +300,25 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     // 文字が入力される度に呼ばれる
     func updateSearchResults(for searchController: UISearchController) {
-        let kStoredMemosKey: String = "kStoredMemosKey"
-        self.searchResults = [kStoredMemosKey.filter{
-            // 大文字と小文字を区別せずに検索
-            $0.lowercased().contains(searchController.searchBar.text!.lowercased())
-            }]
-        self.tableView.reloadData()
+        print("searchController.searchBar.text?: \(searchController.searchBar.text)")
+        searchResults = [Memo]()
+        //let kStoredMemosKey: String = "kStoredMemosKey"
+        if searchController.searchBar.text?.count != 0 {
+            for (i, memo) in dataSource.enumerated() {
+                if memo.title.contains(searchController.searchBar.text!.lowercased()) {
+                    print("searchController.searchBar.text?")
+                    searchResults.append(dataSource[i])
+                }
+            }
+//            self.searchResults = [kStoredMemosKey.filter{
+//                       // 大文字と小文字を区別せずに検索
+//                       $0.lowercased().contains(searchController.searchBar.text!.lowercased())
+//                       }]
+            self.tableView.reloadData()
+        } else {
+            self.tableView.reloadData()
+        }
+       
     }
     
     //　スワイプで削除する関数
@@ -248,6 +343,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             self.groupView.isHidden = false
             completionHandler(true)
         }
+        changeColortag = indexPath.row
+        self.memo = dataSource[indexPath.row]
         return UISwipeActionsConfiguration(actions: [action])
     }
 }

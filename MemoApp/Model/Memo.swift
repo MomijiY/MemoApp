@@ -12,4 +12,5 @@ struct Memo: Codable {
     var id: String //UUID
     var title: String
     var content: String
+    var color: String
 }

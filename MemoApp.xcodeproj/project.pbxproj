@@ -20,13 +20,19 @@
 		790A4FA72421C11D00EC2E09 /* tenthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A4FA62421C11D00EC2E09 /* tenthViewController.swift */; };
 		790A4FA92421C16F00EC2E09 /* lastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A4FA82421C16F00EC2E09 /* lastViewController.swift */; };
 		790A4FBD2421C50800EC2E09 /* Assets 11-53-52-935.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790A4FBC2421C50800EC2E09 /* Assets 11-53-52-935.xcassets */; };
-		7912EF71241DE7610012D93F /* Phomemoチュートリアル in Resources */ = {isa = PBXBuildFile; fileRef = 7912EF70241DE7610012D93F /* Phomemoチュートリアル */; };
 		793A7F7D240BE7E200C6C0D2 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793A7F7C240BE7E200C6C0D2 /* Memo.swift */; };
 		793A7F7F240BE83600C6C0D2 /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793A7F7E240BE83600C6C0D2 /* UserDefaultsModel.swift */; };
 		793CA80424112E0C0062AD7E /* AddViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793CA80324112E0B0062AD7E /* AddViewController.storyboard */; };
 		793CA8072411E00E0062AD7E /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 793CA8062411E00E0062AD7E /* ViewController.storyboard */; };
 		797FD51D238A7F4300416028 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 797FD51C238A7F4300416028 /* tessdata */; };
 		797FD51F238C05F800416028 /* No-Image.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 797FD51E238C05F800416028 /* No-Image.PNG */; };
+		7982C365242DA4320097C7B1 /* 0327.008.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7982C364242DA4310097C7B1 /* 0327.008.jpeg */; };
+		7991356424303854009EF00E /* eleventhViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991356324303854009EF00E /* eleventhViewController.swift */; };
+		7991356624303860009EF00E /* twelthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7991356524303860009EF00E /* twelthViewController.swift */; };
+		799135682430386E009EF00E /* thirteenthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799135672430386E009EF00E /* thirteenthViewController.swift */; };
+		79916BEE24330C6A0071DE29 /* Phomemoチュートリアル0331.001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 79916BEC24330C690071DE29 /* Phomemoチュートリアル0331.001.jpeg */; };
+		79916BEF24330C6A0071DE29 /* Phomemoチュートリアル0331.002.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 79916BED24330C690071DE29 /* Phomemoチュートリアル0331.002.jpeg */; };
+		79916BF124330CD40071DE29 /* tenth2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79916BF024330CD40071DE29 /* tenth2ViewController.swift */; };
 		79B120D8241B931D006832A3 /* 写真アイコン9.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B120D7241B931D006832A3 /* 写真アイコン9.png */; };
 		79B120DE241B95A7006832A3 /* 文書ドキュメント.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B120DD241B95A7006832A3 /* 文書ドキュメント.png */; };
 		79B120E0241BAAAE006832A3 /* icon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 79B120DF241BAAAE006832A3 /* icon.jpeg */; };
@@ -86,13 +92,27 @@
 		790A4FA62421C11D00EC2E09 /* tenthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tenthViewController.swift; sourceTree = "<group>"; };
 		790A4FA82421C16F00EC2E09 /* lastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lastViewController.swift; sourceTree = "<group>"; };
 		790A4FBC2421C50800EC2E09 /* Assets 11-53-52-935.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 11-53-52-935.xcassets"; sourceTree = "<group>"; };
-		7912EF70241DE7610012D93F /* Phomemoチュートリアル */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Phomemoチュートリアル"; path = "../../../../../../Desktop/Phomemoチュートリアル/Phomemoチュートリアル"; sourceTree = "<group>"; };
 		793A7F7C240BE7E200C6C0D2 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		793A7F7E240BE83600C6C0D2 /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
 		793CA80324112E0B0062AD7E /* AddViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddViewController.storyboard; sourceTree = "<group>"; };
 		793CA8062411E00E0062AD7E /* ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewController.storyboard; sourceTree = "<group>"; };
 		797FD51C238A7F4300416028 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		797FD51E238C05F800416028 /* No-Image.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "No-Image.PNG"; sourceTree = "<group>"; };
+		7982C35C242DA3770097C7B1 /* 0327.006.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0327.006.jpeg; sourceTree = "<group>"; };
+		7982C35D242DA3780097C7B1 /* 0327.003.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0327.003.jpeg; sourceTree = "<group>"; };
+		7982C35E242DA3780097C7B1 /* 0327.009.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0327.009.jpeg; sourceTree = "<group>"; };
+		7982C35F242DA3780097C7B1 /* 0327.005.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0327.005.jpeg; sourceTree = "<group>"; };
+		7982C360242DA3780097C7B1 /* 0327.002.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0327.002.jpeg; sourceTree = "<group>"; };
+		7982C361242DA3780097C7B1 /* 0327.004.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0327.004.jpeg; sourceTree = "<group>"; };
+		7982C362242DA3780097C7B1 /* 0327.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0327.001.jpeg; sourceTree = "<group>"; };
+		7982C363242DA3780097C7B1 /* 0327.007.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0327.007.jpeg; sourceTree = "<group>"; };
+		7982C364242DA4310097C7B1 /* 0327.008.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 0327.008.jpeg; path = "../../Phomemoチュートリアル0327/0327.008.jpeg"; sourceTree = "<group>"; };
+		7991356324303854009EF00E /* eleventhViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eleventhViewController.swift; sourceTree = "<group>"; };
+		7991356524303860009EF00E /* twelthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twelthViewController.swift; sourceTree = "<group>"; };
+		799135672430386E009EF00E /* thirteenthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirteenthViewController.swift; sourceTree = "<group>"; };
+		79916BEC24330C690071DE29 /* Phomemoチュートリアル0331.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Phomemoチュートリアル0331.001.jpeg"; sourceTree = "<group>"; };
+		79916BED24330C690071DE29 /* Phomemoチュートリアル0331.002.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Phomemoチュートリアル0331.002.jpeg"; sourceTree = "<group>"; };
+		79916BF024330CD40071DE29 /* tenth2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tenth2ViewController.swift; sourceTree = "<group>"; };
 		79B120D7241B931D006832A3 /* 写真アイコン9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "写真アイコン9.png"; path = "../../写真アイコン9.png"; sourceTree = "<group>"; };
 		79B120DA241B932A006832A3 /* 写真アイコン9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "写真アイコン9.png"; sourceTree = "<group>"; };
 		79B120DD241B95A7006832A3 /* 文書ドキュメント.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "文書ドキュメント.png"; path = "../../../../../文書ドキュメント.png"; sourceTree = "<group>"; };
@@ -215,6 +235,10 @@
 				790A4FA22421C10800EC2E09 /* eighthViewController.swift */,
 				790A4FA42421C11400EC2E09 /* ninethViewController.swift */,
 				790A4FA62421C11D00EC2E09 /* tenthViewController.swift */,
+				79916BF024330CD40071DE29 /* tenth2ViewController.swift */,
+				7991356324303854009EF00E /* eleventhViewController.swift */,
+				7991356524303860009EF00E /* twelthViewController.swift */,
+				799135672430386E009EF00E /* thirteenthViewController.swift */,
 				790A4FA82421C16F00EC2E09 /* lastViewController.swift */,
 				79E1E78C2386B57000A4A42E /* Main.storyboard */,
 				79B120D9241B9321006832A3 /* Tutorial Image */,
@@ -225,7 +249,6 @@
 		79B120D9241B9321006832A3 /* Tutorial Image */ = {
 			isa = PBXGroup;
 			children = (
-				7912EF70241DE7610012D93F /* Phomemoチュートリアル */,
 				79B120DD241B95A7006832A3 /* 文書ドキュメント.png */,
 				79B120DA241B932A006832A3 /* 写真アイコン9.png */,
 			);
@@ -261,6 +284,17 @@
 				797FD51C238A7F4300416028 /* tessdata */,
 				797FD51E238C05F800416028 /* No-Image.PNG */,
 				79B120DF241BAAAE006832A3 /* icon.jpeg */,
+				7982C362242DA3780097C7B1 /* 0327.001.jpeg */,
+				7982C360242DA3780097C7B1 /* 0327.002.jpeg */,
+				7982C35D242DA3780097C7B1 /* 0327.003.jpeg */,
+				7982C361242DA3780097C7B1 /* 0327.004.jpeg */,
+				7982C35F242DA3780097C7B1 /* 0327.005.jpeg */,
+				7982C35C242DA3770097C7B1 /* 0327.006.jpeg */,
+				7982C363242DA3780097C7B1 /* 0327.007.jpeg */,
+				7982C364242DA4310097C7B1 /* 0327.008.jpeg */,
+				7982C35E242DA3780097C7B1 /* 0327.009.jpeg */,
+				79916BEC24330C690071DE29 /* Phomemoチュートリアル0331.001.jpeg */,
+				79916BED24330C690071DE29 /* Phomemoチュートリアル0331.002.jpeg */,
 				79B120D7241B931D006832A3 /* 写真アイコン9.png */,
 				79E1E7592386B53D00A4A42E /* AppDelegate.swift */,
 				790A4FBC2421C50800EC2E09 /* Assets 11-53-52-935.xcassets */,
@@ -444,13 +478,15 @@
 				790A4FBD2421C50800EC2E09 /* Assets 11-53-52-935.xcassets in Resources */,
 				797FD51D238A7F4300416028 /* tessdata in Resources */,
 				793CA8072411E00E0062AD7E /* ViewController.storyboard in Resources */,
-				7912EF71241DE7610012D93F /* Phomemoチュートリアル in Resources */,
 				79B120DE241B95A7006832A3 /* 文書ドキュメント.png in Resources */,
 				79F54BFA24111C910050DD66 /* DetailViewController.storyboard in Resources */,
 				797FD51F238C05F800416028 /* No-Image.PNG in Resources */,
 				79E1E7662386B54100A4A42E /* Preview Assets.xcassets in Resources */,
 				79F54BF7240FCF950050DD66 /* TableViewCell.xib in Resources */,
+				79916BEF24330C6A0071DE29 /* Phomemoチュートリアル0331.002.jpeg in Resources */,
+				79916BEE24330C6A0071DE29 /* Phomemoチュートリアル0331.001.jpeg in Resources */,
 				79E1E78D2386B57000A4A42E /* Main.storyboard in Resources */,
+				7982C365242DA4320097C7B1 /* 0327.008.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,8 +623,11 @@
 				790A4F9B2421C0D000EC2E09 /* forthViewController.swift in Sources */,
 				793A7F7F240BE83600C6C0D2 /* UserDefaultsModel.swift in Sources */,
 				790A4FA32421C10800EC2E09 /* eighthViewController.swift in Sources */,
+				79916BF124330CD40071DE29 /* tenth2ViewController.swift in Sources */,
 				790A4FA52421C11400EC2E09 /* ninethViewController.swift in Sources */,
+				7991356424303854009EF00E /* eleventhViewController.swift in Sources */,
 				79E1E78F2386B6B100A4A42E /* ViewController.swift in Sources */,
+				7991356624303860009EF00E /* twelthViewController.swift in Sources */,
 				790A4F9D2421C0D800EC2E09 /* fifthViewController.swift in Sources */,
 				79E1E75A2386B53D00A4A42E /* AppDelegate.swift in Sources */,
 				790A4F952421C0B100EC2E09 /* FirstViewController.swift in Sources */,
@@ -597,6 +636,7 @@
 				79E1E75F2386B53D00A4A42E /* MemoApp.xcdatamodeld in Sources */,
 				79E1E7912386B6BA00A4A42E /* DetailViewController.swift in Sources */,
 				790A4F972421C0BD00EC2E09 /* secondViewController.swift in Sources */,
+				799135682430386E009EF00E /* thirteenthViewController.swift in Sources */,
 				793A7F7D240BE7E200C6C0D2 /* Memo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,7 +819,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -802,7 +842,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.litech.Phomemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

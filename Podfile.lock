@@ -1,16 +1,28 @@
 PODS:
+  - ImageViewer (6.0.0)
+  - Siren (5.4.0)
   - SwiftyTesseract (2.2.2)
+  - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
+  - ImageViewer
+  - Siren
   - SwiftyTesseract (~> 2.0)
+  - TinyConstraints
 
 SPEC REPOS:
   trunk:
+    - ImageViewer
+    - Siren
     - SwiftyTesseract
+    - TinyConstraints
 
 SPEC CHECKSUMS:
+  ImageViewer: cb88ef1c0ba19161bc10702adfdcebc116a7a59d
+  Siren: 9df16ed5278cfaad7ea034f3d2206e4f6983e9b8
   SwiftyTesseract: a05d2c6771872f203a9ba65055cb2a8b6a385552
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: 3d7f883a058c3f434f4359e0ddad3bd019d679ab
+PODFILE CHECKSUM: 62e63ed3eee62cfaf4a9f3b57764660395b508c5
 
 COCOAPODS: 1.8.3

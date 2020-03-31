@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Siren
 
 
 @UIApplicationMain
@@ -17,6 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // 起動ごとにアラート表示、強制アップデートのルール
+        let forceRules = Rules.init(promptFrequency: .immediately, forAlertType: .force)
+
+        // 1日１回アラート表示、アップデートのタイミングはユーザが選べるルール
+        let optionRules = Rules.init(promptFrequency: .daily, forAlertType: .option)
+
+        // メジャーバージョンが上がった場合は強制アップデート
+        // マイナーバージョン以下のアップデートの場合はユーザに選択可能とする
+        let siren = Siren.shared
+        siren.rulesManager = RulesManager(
+            majorUpdateRules: forceRules,
+            minorUpdateRules: optionRules,
+            patchUpdateRules: optionRules,
+            revisionUpdateRules: optionRules,
+            showAlertAfterCurrentVersionHasBeenReleasedForDays: 1
+        )
         // Override point for customization after application launch.
 //
 //        //使用するStoryboardのインスタンス化

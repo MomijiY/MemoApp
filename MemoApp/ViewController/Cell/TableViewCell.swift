@@ -42,33 +42,36 @@ class TableViewCell: UITableViewCell {
         contentLabel.text = content
     }
     
-    func tagColor(color: UIColor) {
-        if tagColorUI == UIColor.red {
+    func tagColor(color: String) {
+        if color == "red" {
             tagColor.backgroundColor = UIColor.red
         }
-        else if tagColorUI == UIColor.orange {
+        else if color == "orange" {
             tagColor.backgroundColor = UIColor.orange
         }
-        else if tagColorUI == UIColor.yellow {
+        else if color == "yellow" {
             tagColor.backgroundColor = UIColor.yellow
         }
-        else if tagColorUI == UIColor.systemTeal {
+        else if color == "systemTeal" {
             tagColor.backgroundColor = UIColor.systemTeal
         }
-        else if tagColorUI == UIColor.blue {
+        else if color == "blue" {
             tagColor.backgroundColor = UIColor.blue
         }
-        else if tagColorUI == UIColor.green {
+        else if color == "green" {
             tagColor.backgroundColor = UIColor.green
         }
-        else if tagColorUI == UIColor.purple {
+        else if color == "purple" {
             tagColor.backgroundColor = UIColor.purple
         }
-        else if tagColorUI == UIColor.brown {
+        else if color == "brown" {
             tagColor.backgroundColor = UIColor.brown
         }
-        else if tagColorUI == UIColor.black {
+        else if color == "black" {
             tagColor.backgroundColor = UIColor.black
+        }
+        else if color == "white" {
+            tagColor.backgroundColor = UIColor.white
         }
     }
 }

@@ -9,21 +9,26 @@
 
 import UIKit
 import SwiftyTesseract
+import ImageViewer
 
-final class DetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+final class DetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GalleryItemsDataSource {
     
     // MARK: IBOutlet
     
     @IBOutlet weak var titletextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var takePictureButton: UIButton!
+    @IBOutlet weak var selectPictureButton: UIButton!
+    @IBOutlet weak var swiftyTesseButton: UIButton!
+//    @IBOutlet weak var navigationBar: UINavigationBar!
     
     // MARK: Properties
     
     private let model = UserDefaultsModel()
     private var memo: Memo!
     let swiftyTesseract = SwiftyTesseract(language: RecognitionLanguage.japanese)
+    var galleryItem: GalleryItem!
     
     // MARK: Lifecycle
 
@@ -48,9 +53,34 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
         // 閉じるボタン
         let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped))
         kbToolBar.items = [spacer, commitButton]
+        titletextField.inputAccessoryView = kbToolBar
         contentTextView.inputAccessoryView = kbToolBar
         configureUI()
+        
+        let image = model.loadImage(id: memo.id)
+        galleryItem = GalleryItem.image{ $0(image) }
+        
+        // 画像をタップしたら拡大
+        imageView.isUserInteractionEnabled = true
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
+        imageView.addGestureRecognizer(recognizer)
+        
     }
+    
+    @objc func onTap(_ sender: UIImageView) {
+        let galleryViewController = GalleryViewController(startIndex: 0, itemsDataSource: self, configuration: [.deleteButtonMode(.none), .seeAllCloseButtonMode(.none), .thumbnailsButtonMode(.none)])
+        self.present(galleryViewController, animated: true, completion: nil)
+    }
+
+    // MARK: GalleryItemsDataSource
+    func itemCount() -> Int {
+        return 1
+    }
+
+    func provideGalleryItem(_ index: Int) -> GalleryItem {
+        return galleryItem
+    }
+    
         @IBAction func tappedSwiftyTesseract(_ sender: Any) {
             guard let image = imageView.image else { return }
             
@@ -113,6 +143,7 @@ final class DetailViewController: UIViewController, UIImagePickerControllerDeleg
     //                    let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
     //                    //画像を設定する
                         imageView.image = image
+                        galleryItem = GalleryItem.image{ $0(image) }
         }
     
     
@@ -153,8 +184,11 @@ extension DetailViewController {
     private func configureUI() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(onTapSaveButton(_:)))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 145, blue: 147, alpha: 1.0)
-        
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0/255, green: 145/255, blue: 147/255, alpha: 1.0)
+        takePictureButton.layer.cornerRadius = 10
+        selectPictureButton.layer.cornerRadius = 10
+        swiftyTesseButton.layer.cornerRadius = 10
+        swiftyTesseButton.backgroundColor = UIColor(red: 0/255, green: 145/255, blue: 147/255, alpha: 1.0)
         // - Label
         titletextField.text = memo.title
         contentTextView.text = memo.content
@@ -172,7 +206,8 @@ extension DetailViewController {
             let content = contentTextView.text else { return }
         
         // Save memo
-        let memo = Memo(id: self.memo.id, title: title, content: content)
+//        let memo = Memo(id: self.memo.id, title: title, content: content)
+        let memo = Memo(id: self.memo.id, title: title, content: content, color: self.memo.color)
         if let storedMemos = model.loadMemos() {
             var newMemos = storedMemos
             
@@ -187,6 +222,11 @@ extension DetailViewController {
             model.saveMemos(newMemos)
         } else {
             model.saveMemos([memo])
+        }
+        
+        // Save image
+        if let image = imageView.image {
+            model.saveImage(id: memo.id, image: image)
         }
         
         memoTitleArray = [title]

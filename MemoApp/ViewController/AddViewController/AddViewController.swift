@@ -8,22 +8,27 @@
 
 import UIKit
 import SwiftyTesseract
+import ImageViewer
+
 var memoTitleArray = [String]()
 
-class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, GalleryItemsDataSource {
         // MARK: IBOutlet
         
     @IBOutlet weak var titleTextField: UITextField!
     //    @IBOutlet weak var contentTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var groupButton: UIButton!
-    @IBOutlet weak var groupLabel: UILabel!
+    @IBOutlet weak var launchCameraButton: UIButton!
+    @IBOutlet weak var fromAlbumButton: UIButton!
+    @IBOutlet weak var swiftyTesseracButton: UIButton!
 //        @IBOutlet weak var tableView: UITableView!
         // MARK: Properties
     private let model = UserDefaultsModel()
     private var dataSource: [Memo] = [Memo]()
+    private var memo: Memo!
     let swiftyTesseract = SwiftyTesseract(language: RecognitionLanguage.japanese)
+    var galleryItem: GalleryItem!
     // MARK: Lifecycle
         
     static func instance() -> AddViewController {
@@ -54,28 +59,47 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
 //            //first image
 //            imageView.image = UIImage(named: "No-Image.PNG")
         configureUI()
+        
+        // 画像をタップしたら拡大
+        imageView.isUserInteractionEnabled = true
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
+        imageView.addGestureRecognizer(recognizer)
+        
     }
+    
+    @objc func onTap(_ sender: UIImageView) {
+        let galleryViewController = GalleryViewController(startIndex: 0, itemsDataSource: self, configuration: [.deleteButtonMode(.none), .seeAllCloseButtonMode(.none), .thumbnailsButtonMode(.none)])
+        self.present(galleryViewController, animated: true, completion: nil)
+    }
+
+    // MARK: GalleryItemsDataSource
+    func itemCount() -> Int {
+        return 1
+    }
+
+    func provideGalleryItem(_ index: Int) -> GalleryItem {
+        return galleryItem
+    }
+    
         
     @IBAction func tappedSwiftyTesseract(_ sender: Any) {
+        if imageView.image == nil {
+            showAlert(title: "画像をセットしてください。")
+        }else {
+        
         guard let image = imageView.image else { return }
         
         swiftyTesseract.performOCR(on: image) { recognizedString in
             guard let text = recognizedString else { return }
             print("\(text)")
             self.contentTextView.text! = text
+    
+            }
         }
     }
     
     @IBAction func launchCamera(_ sender: UIButton) {
-            let camera = UIImagePickerController.SourceType.camera
-            if UIImagePickerController.isSourceTypeAvailable(camera) {
-                let picker = UIImagePickerController()
-                picker.sourceType = camera
-                picker.delegate = self
-                self.present(picker, animated: true)
-            }
-            imageView.isHidden = false
-            // imageButton.isHidden = true
+//             imageButton.isHidden = true
         }
     //カメラロールから写真を選択する処理
     @IBAction func choosePicture() {
@@ -115,8 +139,10 @@ class AddViewController: UIViewController,UIImagePickerControllerDelegate,UINavi
     //                    let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
     //                    //画像を設定する
         imageView.image = image
+        galleryItem = GalleryItem.image{ $0(image) }
     }
     func showAlert(title:String){
+        
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
     
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -140,7 +166,10 @@ extension AddViewController {
         private func configureUI() {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save
                 , target: self, action: #selector(onTapSaveButton(_:)))
-//            navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0, green: 145, blue: 147, alpha: 1.0)
+            navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0/255, green: 145/255, blue: 147/255, alpha: 1.0)
+            launchCameraButton.layer.cornerRadius = 10
+            fromAlbumButton.layer.cornerRadius = 10
+            swiftyTesseracButton.layer.cornerRadius = 10
         }
 
     }
@@ -155,7 +184,7 @@ extension AddViewController {
                     let content = contentTextView.text else { return }
                 
                 // Save memo
-                let memo = Memo(id: UUID().uuidString, title: title, content: content)
+            let memo = Memo(id: UUID().uuidString, title: title, content: content, color: "none")
                 if let storedMemos = model.loadMemos() {
                     var newMemos = storedMemos
                     newMemos.append(memo)

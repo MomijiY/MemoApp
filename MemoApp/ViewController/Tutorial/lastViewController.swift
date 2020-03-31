@@ -9,10 +9,12 @@
 import UIKit
 
 class lastViewController: UIViewController {
+    
+    @IBOutlet weak var beginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        beginButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
     
